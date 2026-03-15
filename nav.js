@@ -1,25 +1,23 @@
 /* nav.js — injects nav + footer + cursor + scroll logic */
 (function() {
 
-  /* ── cursor ── */
+  /* ── cursor glow orb ── */
   document.body.insertAdjacentHTML('afterbegin',
-    '<div id="cursor"></div><div id="cursor-dot"></div>'
+    '<div id="cursor"></div>'
   );
   const cur = document.getElementById('cursor');
-  const dot = document.getElementById('cursor-dot');
   let mx=0,my=0,cx=0,cy=0;
   document.addEventListener('mousemove', e=>{ mx=e.clientX; my=e.clientY; });
   (function tick(){
-    cx+=(mx-cx)*0.18; cy+=(my-cy)*0.18;
+    cx+=(mx-cx)*0.12; cy+=(my-cy)*0.12;
     cur.style.left=cx+'px'; cur.style.top=cy+'px';
-    dot.style.left=mx+'px'; dot.style.top=my+'px';
     requestAnimationFrame(tick);
   })();
   document.addEventListener('mouseover', e=>{
-    if(e.target.closest('a,button')) cur.style.transform='scale(2.2)';
+    if(e.target.closest('a,button')) cur.classList.add('on-link');
   });
   document.addEventListener('mouseout', e=>{
-    if(e.target.closest('a,button')) cur.style.transform='scale(1)';
+    if(e.target.closest('a,button')) cur.classList.remove('on-link');
   });
 
   /* ── nav ── */
