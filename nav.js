@@ -42,6 +42,7 @@
 
   /* ── nav scroll ── */
   const nav = document.getElementById('sitenav');
+  if (page === 'index.html' || page === '') nav.classList.add('over-dark');
   window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60));
 
   /* ── footer ── */

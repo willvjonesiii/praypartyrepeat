@@ -36,7 +36,7 @@ body {
 
 /* ── CURSOR ──────────────────────────────── */
 html, html *, html *::before, html *::after {
-  cursor: url('crystal-cursor.svg') 16 0, auto !important;
+  cursor: url('crystal-cursor.svg') 4 1, auto !important;
 }
 /* Soft glowing orb that trails the crystal */
 #cursor {
@@ -61,6 +61,11 @@ html, html *, html *::before, html *::after {
   );
 }
 #cursor-dot { display: none; }
+
+/* ── NAV OVER DARK HERO ─────────────────── */
+nav.over-dark:not(.scrolled) .nav-links a { color: rgba(255,255,255,0.78); }
+nav.over-dark:not(.scrolled) .nav-links a:hover { color: #fff; }
+nav.over-dark:not(.scrolled) .nav-brand { color: rgba(255,255,255,0.92); }
 
 /* ── NAV ──────────────────────────────────── */
 nav {

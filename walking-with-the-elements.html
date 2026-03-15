@@ -7,506 +7,1085 @@
 <link rel="stylesheet" href="style.css">
 <style>
 
-/* ══ PROGRAM HERO ══════════════════════════════════════ */
-#program-hero {
+/* ══ HERO ══════════════════════════════════════════════ */
+#wte-hero {
   position: relative;
-  height: 75vh; min-height: 520px;
-  display: flex; align-items: flex-end;
+  height: 100vh; min-height: 680px;
+  display: flex; align-items: center; justify-content: center;
   overflow: hidden;
 }
-.program-hero-bg {
+.wte-hero-bg {
   position: absolute; inset: 0;
   background-image: url('https://static.wixstatic.com/media/a3c153_6f27754e06844d62a1708b316797fc08~mv2.jpg');
-  background-size: cover; background-position: center;
-  animation: kbz 24s ease-in-out infinite alternate;
+  background-size: cover; background-position: center 30%;
+  animation: kbz 28s ease-in-out infinite alternate;
 }
 @keyframes kbz {
-  0%   { transform: scale(1.05); }
-  100% { transform: scale(1.1) translate(-0.5%, 0.5%); }
+  0%   { transform: scale(1.06); }
+  100% { transform: scale(1.12) translate(-0.5%, 1%); }
 }
-.program-hero-overlay {
+.wte-hero-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(30,30,30,0.78) 0%, rgba(30,30,30,0.25) 60%, transparent 100%);
+  background: linear-gradient(
+    to bottom,
+    rgba(10,18,12,0.55) 0%,
+    rgba(10,18,12,0.48) 45%,
+    rgba(10,18,12,0.72) 100%
+  );
 }
-.program-hero-content {
+.wte-hero-content {
   position: relative; z-index: 2;
-  padding: 0 60px 64px;
+  text-align: center; padding: 0 24px;
   opacity: 0;
-  animation: fadeUp 1.2s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
+  animation: fadeUp 1.4s 0.4s cubic-bezier(0.16,1,0.3,1) forwards;
 }
 @keyframes fadeUp {
-  from { opacity:0; transform:translateY(24px); }
+  from { opacity:0; transform:translateY(32px); }
   to   { opacity:1; transform:translateY(0); }
 }
-.program-hero-content .eyebrow { color: rgba(255,255,255,0.6); }
-.program-hero-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(44px, 6.5vw, 84px);
-  font-weight: 300; color: #fff;
-  line-height: 1.05;
+.wte-eyebrow {
+  font-family: 'Cinzel', serif; font-size: 10px;
+  letter-spacing: 0.5em; text-transform: uppercase;
+  color: rgba(255,255,255,0.55); display: block; margin-bottom: 28px;
 }
-.program-hero-title em { font-style: italic; color: rgba(255,255,255,0.8); }
-.program-hero-sub {
-  font-family: 'Cinzel', serif; font-size: 11px;
-  letter-spacing: 0.32em; text-transform: uppercase;
-  color: rgba(255,255,255,0.55); margin-top: 16px;
+.wte-hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(52px, 8.5vw, 112px);
+  font-weight: 300; color: #fff; line-height: 1;
+  margin-bottom: 28px;
+}
+.wte-hero-title em { font-style: italic; color: rgba(255,255,255,0.78); }
+.wte-hero-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(16px, 2.2vw, 24px);
+  font-style: italic; font-weight: 300;
+  color: rgba(255,255,255,0.68);
+  margin-bottom: 48px; line-height: 1.6;
+}
+.wte-elements-row {
+  display: flex; gap: 20px; justify-content: center;
+  margin-bottom: 52px; flex-wrap: wrap;
+}
+.wte-element-pill {
+  font-family: 'Cinzel', serif; font-size: 9px;
+  letter-spacing: 0.35em; text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 8px 20px;
+}
+.wte-hero-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn-hero-primary {
+  display: inline-block; font-family: 'Jost', sans-serif;
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--charcoal); background: #fff;
+  padding: 16px 44px; text-decoration: none;
+  transition: background 0.3s;
+}
+.btn-hero-primary:hover { background: #f0f0f0; }
+.btn-hero-ghost {
+  display: inline-block; font-family: 'Jost', sans-serif;
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.35);
+  padding: 16px 44px; text-decoration: none;
+  transition: border-color 0.3s, background 0.3s;
+}
+.btn-hero-ghost:hover { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.07); }
+.wte-scroll-hint {
+  position: absolute; bottom: 36px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 0.3em;
+  text-transform: uppercase; color: rgba(255,255,255,0.35);
+  z-index: 2;
+  animation: bounceDown 2.4s ease-in-out infinite;
+}
+@keyframes bounceDown {
+  0%,100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(6px); }
+}
+.wte-scroll-hint::after {
+  content: '';
+  width: 1px; height: 44px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
 }
 
-/* ══ PROGRAM OVERVIEW ══════════════════════════════════ */
-#overview {
+/* ══ IS THIS YOU? ══════════════════════════════════════ */
+#ity {
   background: var(--bg);
 }
-.overview-intro {
-  max-width: 760px; margin: 0 auto 72px; text-align: center;
+.ity-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: start;
 }
-.overview-intro .section-title { text-align: center; }
-.big-image {
-  width: 100%; max-height: 640px; object-fit: cover; display: block;
-  margin-bottom: 72px;
+.ity-heading .section-title { margin-bottom: 20px; }
+.ity-heading .body-text { margin-bottom: 40px; }
+.ity-list {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 0;
 }
-.overview-pillars {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+.ity-item {
+  display: flex; align-items: flex-start; gap: 20px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--hairline);
 }
-.pillar-card {
-  background: var(--bg2); padding: 48px 40px;
+.ity-check {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; color: var(--green); flex-shrink: 0; margin-top: 2px;
+}
+.ity-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px; font-style: italic; font-weight: 300;
+  color: var(--charcoal); line-height: 1.5;
+}
+.ity-close {
+  margin-top: 44px;
+  padding: 36px 44px;
+  background: var(--green);
+}
+.ity-close p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-style: italic; font-weight: 300;
+  color: rgba(255,255,255,0.92); line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+/* ══ PROMISE BANNER ════════════════════════════════════ */
+#wte-promise {
+  background: var(--charcoal);
+  padding: 100px 0;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+#wte-promise::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(61,90,71,0.3) 0%, transparent 70%);
+  pointer-events: none;
+}
+.promise-eyebrow {
+  font-family: 'Cinzel', serif; font-size: 10px;
+  letter-spacing: 0.45em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35); margin-bottom: 32px; display: block;
+}
+.promise-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(34px, 5vw, 68px);
+  font-weight: 300; color: rgba(255,255,255,0.92);
+  line-height: 1.15; max-width: 880px; margin: 0 auto 28px;
+}
+.promise-title em { font-style: italic; color: var(--green-lt); }
+.promise-body {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; font-style: italic; font-weight: 300;
+  color: rgba(255,255,255,0.5); max-width: 620px;
+  margin: 0 auto; line-height: 1.7;
+}
+
+/* ══ WHAT YOU'LL RECEIVE ═══════════════════════════════ */
+#includes {
+  background: var(--bg2);
+}
+.includes-header { text-align: center; margin-bottom: 72px; }
+.includes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-bottom: 64px;
+}
+.include-card {
+  background: var(--bg);
+  padding: 48px 40px;
   border-top: 2px solid var(--hairline);
   position: relative; overflow: hidden;
   transition: background 0.3s;
 }
-.pillar-card::after {
+.include-card::after {
   content: ''; position: absolute; bottom:0; left:0; right:0; height:2px;
-  background: var(--green); transform: scaleX(0); transform-origin:left;
+  background: var(--green); transform: scaleX(0); transform-origin: left;
   transition: transform 0.4s;
 }
-.pillar-card:hover { background: var(--bg3); }
-.pillar-card:hover::after { transform: scaleX(1); }
-.pillar-label {
-  font-family: 'Cinzel', serif; font-size: 10px;
-  letter-spacing: 0.32em; text-transform: uppercase;
-  color: var(--green-lt); margin-bottom: 16px; display: block;
-}
-.pillar-title {
+.include-card:hover { background: var(--bg3); }
+.include-card:hover::after { transform: scaleX(1); }
+.include-num {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 28px; font-weight: 300; color: var(--charcoal);
-  line-height: 1.2;
+  font-size: 52px; font-weight: 300; color: rgba(61,90,71,0.12);
+  line-height: 1; margin-bottom: 16px;
+}
+.include-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 400; color: var(--charcoal);
+  margin-bottom: 12px; line-height: 1.25;
+}
+.include-desc {
+  font-size: 14px; line-height: 1.85; color: var(--body);
+}
+.includes-value {
+  text-align: center;
+  border: 1px solid var(--hairline);
+  padding: 36px 40px;
+  max-width: 640px;
+  margin: 0 auto;
+  background: var(--bg);
+}
+.includes-value p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px; font-style: italic; font-weight: 300;
+  color: var(--body); line-height: 1.7;
+}
+.includes-value strong {
+  font-style: normal; color: var(--green); font-weight: 400;
 }
 
-/* ══ ELEMENTS ══════════════════════════════════════════ */
+/* ══ FIVE ELEMENTS ═════════════════════════════════════ */
 #elements {
-  background: var(--bg2);
+  background: var(--bg);
 }
-.elements-header { margin-bottom: 64px; }
-.element-grid {
-  display: grid; gap: 64px;
+.elements-header { text-align: center; margin-bottom: 88px; }
+.element-journey {
+  display: flex; flex-direction: column; gap: 0;
 }
 .element-row {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 520px;
 }
-.element-row:nth-child(even) .element-image { order: 2; }
-.element-row:nth-child(even) .element-text  { order: 1; }
-.element-image img {
-  width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;
+.element-row:nth-child(even) .element-visual { order: 2; }
+.element-row:nth-child(even) .element-copy  { order: 1; }
+.element-visual {
+  position: relative; overflow: hidden;
+}
+.element-visual img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 10s ease;
+}
+.element-row:hover .element-visual img { transform: scale(1.06); }
+.element-copy {
+  padding: 72px 80px;
+  display: flex; flex-direction: column; justify-content: center;
+  border-bottom: 1px solid var(--hairline);
+}
+.element-copy:nth-child(even) { background: var(--bg2); }
+.element-symbol {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 56px; color: rgba(61,90,71,0.12);
+  line-height: 1; margin-bottom: 12px;
 }
 .element-month {
   font-family: 'Cinzel', serif; font-size: 10px;
-  letter-spacing: 0.35em; text-transform: uppercase;
+  letter-spacing: 0.38em; text-transform: uppercase;
   color: var(--green-lt); margin-bottom: 14px; display: block;
 }
 .element-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 36px; font-weight: 300; color: var(--charcoal);
-  margin-bottom: 16px; line-height: 1.1;
+  font-size: clamp(32px, 3.5vw, 48px); font-weight: 300;
+  color: var(--charcoal); margin-bottom: 20px; line-height: 1.05;
 }
-.element-body { font-size: 15px; line-height: 1.9; color: var(--body); }
+.element-title em { font-style: italic; color: var(--green); }
+.element-body {
+  font-size: 15px; line-height: 1.9; color: var(--body); margin-bottom: 24px;
+}
+.element-focus {
+  font-family: 'Cinzel', serif; font-size: 10px;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--muted);
+}
+.element-focus span { color: var(--green); }
+
+/* ══ TRANSFORMATION — BEFORE / AFTER ══════════════════ */
+#transformation {
+  background: var(--bg2);
+}
+.transform-header { text-align: center; margin-bottom: 72px; }
+.transform-grid {
+  display: grid; grid-template-columns: 1fr 1px 1fr; gap: 0;
+  border: 1px solid var(--hairline);
+}
+.transform-col {
+  padding: 56px 52px;
+}
+.transform-col.before { background: var(--bg3); }
+.transform-col.after  { background: var(--bg); }
+.transform-divider { background: var(--hairline); }
+.transform-label {
+  font-family: 'Cinzel', serif; font-size: 10px;
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--muted); display: block; margin-bottom: 32px;
+}
+.transform-label.after-label { color: var(--green-lt); }
+.transform-list { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+.transform-list li {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; font-weight: 300; font-style: italic;
+  color: var(--charcoal); line-height: 1.4;
+  padding-left: 24px; position: relative;
+}
+.transform-list li::before {
+  content: '—';
+  position: absolute; left: 0;
+  color: var(--muted); font-style: normal;
+}
+.transform-col.after .transform-list li::before {
+  content: '✦';
+  color: var(--green); font-size: 12px; top: 4px;
+}
+
+/* ══ TESTIMONIALS ══════════════════════════════════════ */
+#wte-testimonials {
+  background: var(--charcoal);
+  position: relative; overflow: hidden;
+}
+#wte-testimonials::before {
+  content: '"';
+  position: absolute; top: -60px; left: 16px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 480px; color: rgba(61,90,71,0.08);
+  line-height: 1; pointer-events: none;
+}
+.wte-testi-header { text-align: center; margin-bottom: 64px; position: relative; z-index:1; }
+.wte-testi-header .section-title { color: rgba(255,255,255,0.88); }
+.wte-testi-header .eyebrow { color: var(--green-lt); }
+.wte-testi-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+  position: relative; z-index: 1;
+}
+.wte-testi-card {
+  background: rgba(253,250,246,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 48px 44px;
+}
+.wte-testi-stars { color: var(--green-lt); font-size: 11px; letter-spacing: 4px; margin-bottom: 20px; }
+.wte-testi-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px; font-weight: 300; font-style: italic;
+  line-height: 1.8; color: rgba(255,255,255,0.82); margin-bottom: 24px;
+}
+.wte-testi-author {
+  font-family: 'Jost', sans-serif; font-size: 11px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--green-lt);
+}
+
+/* ══ GUIDE SECTION ═════════════════════════════════════ */
+#guide {
+  background: var(--bg);
+  padding: 0;
+}
+.guide-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+}
+.guide-image {
+  position: relative; min-height: 640px; overflow: hidden;
+}
+.guide-image img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover; object-position: center 20%;
+}
+.guide-content {
+  padding: 96px 80px;
+  display: flex; flex-direction: column; justify-content: center;
+  background: var(--bg2);
+}
+.guide-content .body-text { max-width: 100%; margin-bottom: 18px; }
 
 /* ══ PRICING ═══════════════════════════════════════════ */
 #pricing {
-  background: var(--bg);
+  background: var(--bg2);
 }
-.pricing-header { text-align: center; margin-bottom: 64px; }
+.pricing-header { text-align: center; margin-bottom: 24px; }
+.pricing-subhead {
+  text-align: center; font-family: 'Cormorant Garamond', serif;
+  font-size: 18px; font-style: italic; font-weight: 300;
+  color: var(--muted); margin-bottom: 64px;
+}
 .pricing-grid {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  margin-bottom: 48px;
 }
 .pricing-card {
-  background: var(--bg2); padding: 0;
-  border: 1px solid var(--hairline);
+  background: var(--bg); border: 1px solid var(--hairline);
   overflow: hidden; position: relative;
   display: flex; flex-direction: column;
+  transition: border-color 0.3s;
 }
-.pricing-card.best-value { border-color: var(--green); }
-.best-value-badge {
+.pricing-card.featured {
+  border-color: var(--green);
+  border-width: 2px;
+}
+.pricing-badge {
   background: var(--green); color: #fff;
   font-family: 'Cinzel', serif; font-size: 9px;
   letter-spacing: 0.3em; text-transform: uppercase;
-  padding: 8px 20px; text-align: center;
+  padding: 10px; text-align: center;
 }
-.pricing-image {
-  width: 100%; height: 200px; object-fit: cover; display: block;
+.pricing-img {
+  width: 100%; height: 220px; object-fit: cover; display: block;
 }
-.pricing-body { padding: 40px 36px; flex: 1; display: flex; flex-direction: column; }
-.pricing-plan-name {
+.pricing-body {
+  padding: 44px 36px; flex: 1; display: flex; flex-direction: column;
+}
+.pricing-plan {
+  font-family: 'Cinzel', serif; font-size: 11px;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--green-lt); display: block; margin-bottom: 12px;
+}
+.pricing-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 28px; font-weight: 300; color: var(--charcoal);
-  margin-bottom: 6px;
+  font-size: 30px; font-weight: 300; color: var(--charcoal);
+  margin-bottom: 20px;
 }
 .pricing-amount {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 52px; font-weight: 300; color: var(--green);
-  line-height: 1; margin: 12px 0 6px;
+  font-size: 56px; font-weight: 300; color: var(--green);
+  line-height: 1;
 }
 .pricing-interval {
-  font-family: 'Jost', sans-serif; font-size: 12px;
+  font-family: 'Jost', sans-serif; font-size: 11px;
   letter-spacing: 0.15em; text-transform: uppercase;
   color: var(--muted); margin-bottom: 20px;
+}
+.pricing-total {
+  font-family: 'Jost', sans-serif; font-size: 12px;
+  color: var(--muted); margin-bottom: 24px;
 }
 .pricing-desc {
   font-size: 14px; line-height: 1.8; color: var(--body);
   margin-bottom: 28px; flex: 1;
 }
-.pricing-validity {
-  font-family: 'Cinzel', serif; font-size: 10px;
-  letter-spacing: 0.25em; text-transform: uppercase;
-  color: var(--green-lt); margin-bottom: 24px;
+.pricing-perks {
+  list-style: none; margin-bottom: 32px; display: flex; flex-direction: column; gap: 10px;
+}
+.pricing-perks li {
+  font-size: 13px; color: var(--body);
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.pricing-perks li::before {
+  content: '✦'; color: var(--green); font-size: 10px; flex-shrink: 0; margin-top: 2px;
+}
+.pricing-guarantee {
+  text-align: center; max-width: 520px; margin: 0 auto;
+  padding: 32px 40px; border: 1px solid var(--hairline);
+}
+.pricing-guarantee p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px; font-style: italic; font-weight: 300;
+  color: var(--body); line-height: 1.7;
 }
 
-/* ══ FAQ ═══════════════════════════════════════════════ */
-#faq {
-  background: var(--bg2);
+/* ══ URGENCY STRIP ═════════════════════════════════════ */
+#urgency {
+  background: var(--green); padding: 28px 0; text-align: center;
 }
-.faq-header { margin-bottom: 56px; }
-.faq-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+.urgency-text {
+  font-family: 'Cinzel', serif; font-size: 11px;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: rgba(255,255,255,0.82);
+}
+.urgency-text strong { color: #fff; }
+
+/* ══ FAQ ═══════════════════════════════════════════════ */
+#wte-faq {
+  background: var(--bg);
+}
+.faq-header { margin-bottom: 60px; }
+.faq-list {
+  display: flex; flex-direction: column; gap: 0;
+  max-width: 860px; margin: 0 auto;
 }
 .faq-item {
-  background: var(--bg); border-top: 1px solid var(--hairline);
-  padding: 0;
+  border-top: 1px solid var(--hairline);
   overflow: hidden;
 }
 .faq-item:last-child { border-bottom: 1px solid var(--hairline); }
 .faq-q {
   font-family: 'Cormorant Garamond', serif;
   font-size: 20px; font-weight: 400; color: var(--charcoal);
-  padding: 28px 32px;
+  padding: 28px 0;
   cursor: pointer;
   display: flex; justify-content: space-between; align-items: center; gap: 16px;
-  transition: background 0.3s;
+  transition: color 0.3s;
   user-select: none;
 }
-.faq-q:hover { background: var(--green-dim); }
+.faq-q:hover { color: var(--green); }
 .faq-icon {
-  font-family: 'Jost', sans-serif; font-size: 20px; font-weight: 300;
+  font-family: 'Jost', sans-serif; font-size: 22px; font-weight: 300;
   color: var(--green); flex-shrink: 0;
   transition: transform 0.3s;
 }
 .faq-a {
   font-size: 15px; line-height: 1.85; color: var(--body);
-  max-height: 0; overflow: hidden;
-  padding: 0 32px;
+  max-height: 0; overflow: hidden; padding: 0;
   transition: max-height 0.4s ease, padding 0.3s ease;
 }
 .faq-item.open .faq-a {
-  max-height: 400px;
-  padding: 0 32px 28px;
+  max-height: 400px; padding: 0 0 28px;
 }
 .faq-item.open .faq-icon { transform: rotate(45deg); }
 
-/* ══ CTA SECTION ═══════════════════════════════════════ */
-#program-cta {
-  background: var(--green); text-align: center; padding: 100px 0;
+/* ══ FINAL CTA ═════════════════════════════════════════ */
+#wte-cta {
+  position: relative;
+  padding: 140px 0;
+  overflow: hidden;
 }
-.program-cta-title {
+.wte-cta-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://cdn.canvasrebel.com/wp-content/uploads/2025/03/c-1741651595283-1741651594532_marins_rodriguez_ltjournallaunch-068.jpg');
+  background-size: cover; background-position: center 25%;
+  background-attachment: fixed;
+}
+.wte-cta-overlay {
+  position: absolute; inset: 0;
+  background: rgba(10,18,12,0.72);
+}
+.wte-cta-content {
+  position: relative; z-index: 2; text-align: center; padding: 0 24px;
+}
+.wte-cta-eyebrow {
+  font-family: 'Cinzel', serif; font-size: 10px;
+  letter-spacing: 0.45em; text-transform: uppercase;
+  color: rgba(255,255,255,0.4); display: block; margin-bottom: 28px;
+}
+.wte-cta-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(36px, 5vw, 64px);
+  font-size: clamp(40px, 6vw, 80px);
   font-weight: 300; color: rgba(255,255,255,0.95);
-  line-height: 1.1; margin-bottom: 20px;
+  line-height: 1.05; margin-bottom: 24px;
 }
-.program-cta-title em { font-style: italic; }
-.program-cta-sub {
-  font-size: 16px; color: rgba(255,255,255,0.65);
-  font-family: 'Jost', sans-serif; margin-bottom: 40px;
+.wte-cta-title em { font-style: italic; color: rgba(180,230,200,0.9); }
+.wte-cta-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; font-style: italic; font-weight: 300;
+  color: rgba(255,255,255,0.55); margin-bottom: 52px; line-height: 1.6;
 }
-.btn-white-solid {
-  display: inline-block;
-  font-family: 'Jost', sans-serif; font-size: 11px;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--green); background: #fff;
-  padding: 14px 40px; text-decoration: none;
-  transition: background 0.3s;
+.wte-cta-actions {
+  display: flex; gap: 18px; justify-content: center; flex-wrap: wrap;
 }
-.btn-white-solid:hover { background: #f0f0f0; }
+@media (max-width: 768px) {
+  .wte-cta-bg { background-attachment: scroll; }
+}
 
 /* ══ RESPONSIVE ════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .element-copy { padding: 56px 52px; }
+}
 @media (max-width: 900px) {
-  .program-hero-content { padding: 0 24px 48px; }
-  .overview-pillars { grid-template-columns: 1fr; }
-  .element-row { grid-template-columns: 1fr; gap: 32px; }
-  .element-row:nth-child(even) .element-image { order: 0; }
-  .element-row:nth-child(even) .element-text  { order: 0; }
+  .ity-inner { grid-template-columns: 1fr; gap: 56px; }
+  .includes-grid { grid-template-columns: 1fr 1fr; }
+  .element-row { grid-template-columns: 1fr; min-height: auto; }
+  .element-row:nth-child(even) .element-visual { order: 0; }
+  .element-row:nth-child(even) .element-copy  { order: 0; }
+  .element-visual { min-height: 320px; }
+  .element-copy { padding: 56px 24px; }
+  .transform-grid { grid-template-columns: 1fr; }
+  .transform-divider { height: 1px; width: 100%; }
+  .wte-testi-grid { grid-template-columns: 1fr; }
+  .guide-inner { grid-template-columns: 1fr; }
+  .guide-image { min-height: 360px; }
+  .guide-content { padding: 60px 24px; }
   .pricing-grid { grid-template-columns: 1fr; }
-  .faq-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .includes-grid { grid-template-columns: 1fr; }
+  .wte-elements-row { gap: 12px; }
 }
 </style>
 </head>
 <body>
 
-<!-- ══ PROGRAM HERO ══════════════════════════════════ -->
-<section id="program-hero">
-  <div class="program-hero-bg"></div>
-  <div class="program-hero-overlay"></div>
-  <div class="program-hero-content">
-    <span class="eyebrow">5-Month Virtual Program</span>
-    <h1 class="program-hero-title">Walking with <em>the Elements</em></h1>
-    <p class="program-hero-sub">Earth · Water · Fire · Air · Spirit</p>
+<!-- ══ HERO ══════════════════════════════════════════ -->
+<section id="wte-hero">
+  <div class="wte-hero-bg"></div>
+  <div class="wte-hero-overlay"></div>
+  <div class="wte-hero-content">
+    <span class="wte-eyebrow">A 5-Month Sacred Initiation</span>
+    <h1 class="wte-hero-title">Walking with<br><em>the Elements</em></h1>
+    <p class="wte-hero-tagline">
+      A living rite of passage for those ready<br>to be transformed by the ancient wisdom within you.
+    </p>
+    <div class="wte-elements-row">
+      <span class="wte-element-pill">Earth</span>
+      <span class="wte-element-pill">Water</span>
+      <span class="wte-element-pill">Fire</span>
+      <span class="wte-element-pill">Air</span>
+      <span class="wte-element-pill">Spirit</span>
+    </div>
+    <div class="wte-hero-ctas">
+      <a href="#pricing" class="btn-hero-primary">View the Investment</a>
+      <a href="#elements" class="btn-hero-ghost">Explore the Journey</a>
+    </div>
+  </div>
+  <div class="wte-scroll-hint">Scroll</div>
+</section>
+
+<!-- ══ IS THIS YOU? ═══════════════════════════════════ -->
+<section id="ity">
+  <div class="container">
+    <div class="ity-inner">
+      <div class="reveal">
+        <span class="eyebrow">Is This You?</span>
+        <div class="hairline"></div>
+        <h2 class="section-title">You've been called to something <em>deeper</em></h2>
+        <p class="body-text">
+          This program is not for everyone. It is for the one who already knows healing is possible — and is ready to do it in community, with ceremony, and with full commitment to the work.
+        </p>
+        <div class="ity-close reveal d2">
+          <p>"If you felt even one of these stir something in you — this is your invitation. Your elements are waiting."</p>
+          <a href="#pricing" class="btn-white-solid" style="display:inline-block;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.9);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.3);padding-bottom:4px;">I'm Ready — Show Me How →</a>
+        </div>
+      </div>
+      <div class="reveal d2">
+        <ul class="ity-list">
+          <li class="ity-item">
+            <span class="ity-check">✦</span>
+            <span class="ity-text">You've done the therapy, read the books, and journaled for years — and something still feels incomplete.</span>
+          </li>
+          <li class="ity-item">
+            <span class="ity-check">✦</span>
+            <span class="ity-text">You feel the pull toward a deeper spiritual path but don't know how to structure it.</span>
+          </li>
+          <li class="ity-item">
+            <span class="ity-check">✦</span>
+            <span class="ity-text">The healing from individual sessions fades too quickly — you're ready for sustained, integrated change.</span>
+          </li>
+          <li class="ity-item">
+            <span class="ity-check">✦</span>
+            <span class="ity-text">You crave a sacred community of like-hearted souls who understand your language.</span>
+          </li>
+          <li class="ity-item">
+            <span class="ity-check">✦</span>
+            <span class="ity-text">You are willing to be uncomfortable, to be honest, and to show up fully for yourself.</span>
+          </li>
+          <li class="ity-item">
+            <span class="ity-check">✦</span>
+            <span class="ity-text">You're done with quick fixes. You're ready for a rite of passage.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ══ PROGRAM OVERVIEW ══════════════════════════════ -->
-<section id="overview">
+<!-- ══ PROMISE BANNER ════════════════════════════════ -->
+<section id="wte-promise">
   <div class="container">
-    <div class="overview-intro reveal">
-      <span class="eyebrow" style="text-align:center;display:block;margin-bottom:14px;"></span>
-      <h2 class="section-title">Walking with the Elements<br><em>5-Month Virtual Program</em></h2>
-      <p class="body-text" style="max-width:620px;margin:0 auto;text-align:center;">
-        This is your Project Page. It's a great opportunity to help visitors understand the context and background of your latest work.
-      </p>
+    <span class="promise-eyebrow reveal">The Invitation</span>
+    <h2 class="promise-title reveal d1">
+      Five months. Five elements.<br><em>One complete transformation.</em>
+    </h2>
+    <p class="promise-body reveal d2">
+      Imagine arriving at the end of this journey knowing yourself in a way you never have — grounded in your body, at peace with your past, clear in your purpose, and deeply connected to something greater than yourself.
+    </p>
+  </div>
+</section>
+
+<!-- ══ WHAT'S INCLUDED ═══════════════════════════════ -->
+<section id="includes">
+  <div class="container">
+    <div class="includes-header reveal">
+      <span class="eyebrow">What You'll Receive</span>
+      <div class="hairline" style="margin:0 auto;"></div>
+      <h2 class="section-title" style="text-align:center;">The Full <em>Experience</em></h2>
     </div>
-
-    <img
-      class="big-image reveal"
-      src="https://static.wixstatic.com/media/11062b_7aa2fd1a9f704ca8b8c9112210cc23bd~mv2.jpg/v1/fill/w_1960,h_1416,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_7aa2fd1a9f704ca8b8c9112210cc23bd~mv2.jpg"
-      alt="Pink Oyster Mushrooms"
-    />
-
-    <h2 class="section-title reveal" style="text-align:center;margin-bottom:48px;">Program Overview</h2>
-    <div class="overview-pillars">
-      <div class="pillar-card reveal d1">
-        <span class="pillar-label">Pillar One</span>
-        <h3 class="pillar-title">5 Monthly Virtual Integration Calls</h3>
+    <div class="includes-grid">
+      <div class="include-card reveal d1">
+        <div class="include-num">01</div>
+        <h3 class="include-title">5 Monthly Group Ceremony Calls</h3>
+        <p class="include-desc">Live 90-minute virtual ceremonies with Marinés and your cohort, held at each elemental threshold. Includes ritual, teaching, sound, and integration.</p>
       </div>
-      <div class="pillar-card reveal d2">
-        <span class="pillar-label">Pillar Two</span>
-        <h3 class="pillar-title">5 Monthly Virtual Integration Calls</h3>
+      <div class="include-card reveal d2">
+        <div class="include-num">02</div>
+        <h3 class="include-title">Monthly 1:1 Private Session</h3>
+        <p class="include-desc">One private 60-minute session with Marinés each month, tailored to your personal journey through each element. Reiki, hypnosis, or Akashic — you choose.</p>
       </div>
-      <div class="pillar-card reveal d3">
-        <span class="pillar-label">Pillar Three</span>
-        <h3 class="pillar-title">5 Monthly Virtual Integration Calls</h3>
+      <div class="include-card reveal d3">
+        <div class="include-num">03</div>
+        <h3 class="include-title">Sacred Community Access</h3>
+        <p class="include-desc">Private group space with your fellow journeyers. This community becomes one of your greatest resources — held with care and clear energetic boundaries.</p>
       </div>
+      <div class="include-card reveal d1">
+        <div class="include-num">04</div>
+        <h3 class="include-title">Monthly Element Ritual Guide</h3>
+        <p class="include-desc">A beautifully curated digital ritual guide each month — practices, prompts, altar suggestions, and elemental wisdom to deepen your experience between calls.</p>
+      </div>
+      <div class="include-card reveal d2">
+        <div class="include-num">05</div>
+        <h3 class="include-title">Sound Healing Audio Library</h3>
+        <p class="include-desc">A new sound healing audio from Marinés each month, tuned to the frequency of each element. Yours to keep and return to long after the program ends.</p>
+      </div>
+      <div class="include-card reveal d3">
+        <div class="include-num">06</div>
+        <h3 class="include-title">Lifetime Recording Access</h3>
+        <p class="include-desc">All ceremony call recordings are yours forever. Return to the teachings whenever you need to revisit a threshold on your journey.</p>
+      </div>
+    </div>
+    <div class="includes-value reveal">
+      <p>
+        The combined value of private sessions, group ceremonies, guides, and community access represents
+        <strong>over $2,000 in individual services</strong> — offered here as a unified, intentional journey at a fraction of that investment.
+      </p>
     </div>
   </div>
 </section>
 
 <!-- ══ THE FIVE ELEMENTS ════════════════════════════ -->
 <section id="elements">
-  <div class="container">
-    <div class="elements-header reveal">
-      <span class="eyebrow">The Journey</span>
-      <div class="hairline"></div>
-      <h2 class="section-title">The Five <em>Elements</em></h2>
+  <div class="container" style="padding:0; max-width:100%;">
+    <div style="max-width:1200px;margin:0 auto;padding:110px 60px 48px;text-align:center;" class="elements-header">
+      <span class="eyebrow reveal">The Journey</span>
+      <div class="hairline reveal" style="margin:0 auto;"></div>
+      <h2 class="section-title reveal" style="text-align:center;">Walking Through <em>Each Element</em></h2>
     </div>
-    <div class="element-grid">
+  </div>
+  <div class="element-journey">
 
-      <div class="element-row reveal">
-        <div class="element-image">
-          <img
-            src="https://static.wixstatic.com/media/11062b_2413040bb0e142369d76f3878b966792~mv2.jpeg/v1/fill/w_756,h_566,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Water.jpeg"
-            alt="Water"
-          />
-        </div>
-        <div class="element-text">
-          <span class="element-month">Month 1</span>
-          <h3 class="element-title">The Element of <em>Water</em></h3>
-          <p class="element-body">
-            This is your Project description. Provide a brief summary to help visitors understand the context and background of your work.
-          </p>
-        </div>
+    <!-- EARTH -->
+    <div class="element-row reveal">
+      <div class="element-visual">
+        <img src="https://static.wixstatic.com/media/nsplsh_34295cc1482f4f2c96a5a1f8c52abef5~mv2.jpg/v1/fill/w_980,h_490,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/nsplsh_34295cc1482f4f2c96a5a1f8c52abef5~mv2.jpg" alt="Earth — Month One" />
       </div>
-
-      <div class="element-row reveal">
-        <div class="element-image">
-          <img
-            src="https://static.wixstatic.com/media/a3c153_c3a1f52d22f34ebf807575c44a0b3c46~mv2.jpg/v1/fill/w_756,h_566,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/hasan-almasi-nKNm_75lH4g-unsplash%20Copy_j.jpg"
-            alt="Element 2"
-          />
-        </div>
-        <div class="element-text">
-          <span class="element-month">Month 2</span>
-          <h3 class="element-title">Project <em>Name</em></h3>
-          <p class="element-body">
-            This is your Project description. Provide a brief summary to help visitors understand the context and background of your work.
-          </p>
-        </div>
+      <div class="element-copy">
+        <div class="element-symbol">⬡</div>
+        <span class="element-month">Month One</span>
+        <h3 class="element-title">The Element of <em>Earth</em></h3>
+        <p class="element-body">
+          We begin where all healing must begin — in the body. Earth is the foundation upon which every other transformation rests. This month we ground, root, and become fully present in our physical vessel. We face what we've avoided, create the stable container we need, and lay the altar for the months ahead.
+        </p>
+        <p class="element-body" style="margin-top:14px;">
+          Through somatic practices, ancestral connection, and deep grounding ceremonies, you will begin to trust your body as sacred ground — perhaps for the first time.
+        </p>
+        <span class="element-focus">Focus: <span>Grounding · Embodiment · Ancestral Healing</span></span>
       </div>
+    </div>
 
-      <div class="element-row reveal">
-        <div class="element-image">
-          <img
-            src="https://static.wixstatic.com/media/a3c153_b1efd27c479d430baf6513f717b4d7df~mv2.jpg/v1/fill/w_756,h_566,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/noah-boyer-mXz8dKrpO8w-unsplash.jpg"
-            alt="Element 3"
-          />
-        </div>
-        <div class="element-text">
-          <span class="element-month">Month 3</span>
-          <h3 class="element-title">Project <em>Name</em></h3>
-          <p class="element-body">
-            This is your Project description. Provide a brief summary to help visitors understand the context and background of your work.
-          </p>
-        </div>
+    <!-- WATER -->
+    <div class="element-row reveal">
+      <div class="element-visual">
+        <img src="https://static.wixstatic.com/media/11062b_2413040bb0e142369d76f3878b966792~mv2.jpeg/v1/fill/w_756,h_566,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Water.jpeg" alt="Water — Month Two" />
       </div>
-
-      <div class="element-row reveal">
-        <div class="element-image">
-          <img
-            src="https://static.wixstatic.com/media/a3c153_a948e560c4fb44eb9ec9a30bf5c105c4~mv2.jpg/v1/fill/w_756,h_564,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/sumner-mahaffey-7Y0NshQLohk-unsplash.jpg"
-            alt="Element 4"
-          />
-        </div>
-        <div class="element-text">
-          <span class="element-month">Month 4</span>
-          <h3 class="element-title">Project <em>Name</em></h3>
-          <p class="element-body">
-            This is your Project description. Provide a brief summary to help visitors understand the context and background of your work.
-          </p>
-        </div>
+      <div class="element-copy">
+        <div class="element-symbol">〰</div>
+        <span class="element-month">Month Two</span>
+        <h3 class="element-title">The Element of <em>Water</em></h3>
+        <p class="element-body">
+          Water does not fight its path — it finds it. This month we surrender to the current of what we've long held beneath the surface. Grief, longing, unexpressed emotion, old wounds that never had a container. Water teaches us that release is not weakness — it is how we become free.
+        </p>
+        <p class="element-body" style="margin-top:14px;">
+          Through cord cutting ceremonies, emotional release practices, and sound healing, you will learn to flow with your emotional intelligence rather than be swept away by it.
+        </p>
+        <span class="element-focus">Focus: <span>Emotional Release · Flow · Cord Cutting</span></span>
       </div>
+    </div>
 
-      <div class="element-row reveal">
-        <div class="element-image">
-          <img
-            src="https://static.wixstatic.com/media/a3c153_b1efd27c479d430baf6513f717b4d7df~mv2.jpg/v1/fill/w_756,h_566,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/noah-boyer-mXz8dKrpO8w-unsplash.jpg"
-            alt="Element 5"
-          />
-        </div>
-        <div class="element-text">
-          <span class="element-month">Month 5</span>
-          <h3 class="element-title">Project <em>Name</em></h3>
-          <p class="element-body">
-            This is your Project description. Provide a brief summary to help visitors understand the context and background of your work.
-          </p>
-        </div>
+    <!-- FIRE -->
+    <div class="element-row reveal">
+      <div class="element-visual">
+        <img src="https://static.wixstatic.com/media/a3c153_b1efd27c479d430baf6513f717b4d7df~mv2.jpg/v1/fill/w_756,h_566,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/noah-boyer-mXz8dKrpO8w-unsplash.jpg" alt="Fire — Month Three" />
       </div>
+      <div class="element-copy">
+        <div class="element-symbol">△</div>
+        <span class="element-month">Month Three</span>
+        <h3 class="element-title">The Element of <em>Fire</em></h3>
+        <p class="element-body">
+          Fire is the element of transformation, courage, and sacred destruction. At the center of this journey stands the fire that burns away what no longer serves. Old identities, limiting stories, patterns inherited from generations before us — they meet their end here.
+        </p>
+        <p class="element-body" style="margin-top:14px;">
+          Through transformational hypnosis, fire ceremonies, and Akashic Record healing, you will step into your full power — not around the fire, but through it.
+        </p>
+        <span class="element-focus">Focus: <span>Transformation · Courage · Subconscious Rewiring</span></span>
+      </div>
+    </div>
 
+    <!-- AIR -->
+    <div class="element-row reveal">
+      <div class="element-visual">
+        <img src="https://static.wixstatic.com/media/a3c153_c3a1f52d22f34ebf807575c44a0b3c46~mv2.jpg/v1/fill/w_756,h_566,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/hasan-almasi-nKNm_75lH4g-unsplash%20Copy_j.jpg" alt="Air — Month Four" />
+      </div>
+      <div class="element-copy">
+        <div class="element-symbol">○</div>
+        <span class="element-month">Month Four</span>
+        <h3 class="element-title">The Element of <em>Air</em></h3>
+        <p class="element-body">
+          With the weight of what was released, Air arrives. The mind clears. Breath, which was shallow and guarded, begins to deepen. You begin to see your life — your relationships, your purpose, your possibilities — from an entirely new elevation.
+        </p>
+        <p class="element-body" style="margin-top:14px;">
+          Breathwork, vision practices, and mental clarity sessions help you articulate the new narrative of your life and create the roadmap for living it fully.
+        </p>
+        <span class="element-focus">Focus: <span>Breathwork · Mental Clarity · Vision</span></span>
+      </div>
+    </div>
+
+    <!-- SPIRIT -->
+    <div class="element-row reveal">
+      <div class="element-visual">
+        <img src="https://static.wixstatic.com/media/a3c153_a948e560c4fb44eb9ec9a30bf5c105c4~mv2.jpg/v1/fill/w_756,h_564,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/sumner-mahaffey-7Y0NshQLohk-unsplash.jpg" alt="Spirit — Month Five" />
+      </div>
+      <div class="element-copy">
+        <div class="element-symbol">✦</div>
+        <span class="element-month">Month Five</span>
+        <h3 class="element-title">The Element of <em>Spirit</em></h3>
+        <p class="element-body">
+          The fifth element weaves all others into one unified field of awareness. Spirit is not somewhere else — it is the thread running through everything you've walked through. This month, you integrate, celebrate, and claim your new self with ceremony and community.
+        </p>
+        <p class="element-body" style="margin-top:14px;">
+          Through a closing ceremony, a final 1:1 with Marinés, and a ritual of gratitude, you complete this rite of passage knowing exactly who you are and why you are here.
+        </p>
+        <span class="element-focus">Focus: <span>Integration · Purpose · Sacred Completion</span></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ TRANSFORMATION ════════════════════════════════ -->
+<section id="transformation">
+  <div class="container">
+    <div class="transform-header reveal">
+      <span class="eyebrow">The Shift</span>
+      <div class="hairline" style="margin:0 auto;"></div>
+      <h2 class="section-title" style="text-align:center;">Where You Begin.<br><em>Where You Arrive.</em></h2>
+    </div>
+    <div class="transform-grid reveal d2">
+      <div class="transform-col before">
+        <span class="transform-label">Where You Begin</span>
+        <ul class="transform-list">
+          <li>Disconnected from your body and its signals</li>
+          <li>Carrying grief, resentment, or unexpressed emotion</li>
+          <li>Repeating the same patterns no matter how much you've worked on yourself</li>
+          <li>Feeling spiritually isolated or unseen</li>
+          <li>A vague, chronic sense that more is possible — but you can't find the door</li>
+          <li>Healing in bursts that don't hold</li>
+        </ul>
+      </div>
+      <div class="transform-divider"></div>
+      <div class="transform-col after">
+        <span class="transform-label after-label">Where You Arrive</span>
+        <ul class="transform-list">
+          <li>Grounded in your body as a place of wisdom, not fear</li>
+          <li>Emotionally free — lighter, more present, more alive</li>
+          <li>Liberated from subconscious patterns that kept you small</li>
+          <li>Held within a lasting community of sacred witnesses</li>
+          <li>Clarity of purpose and the courage to live it out loud</li>
+          <li>Transformation that integrates and compounds over time</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ══ PRICING ═══════════════════════════════════════ -->
+<!-- ══ TESTIMONIALS ═══════════════════════════════════ -->
+<section id="wte-testimonials">
+  <div class="container">
+    <div class="wte-testi-header reveal">
+      <span class="eyebrow">Voices from the Journey</span>
+      <div class="hairline" style="margin:0 auto;"></div>
+      <h2 class="section-title">What Those Who've <em>Walked Say</em></h2>
+    </div>
+    <div class="wte-testi-grid">
+      <div class="wte-testi-card reveal d1">
+        <div class="wte-testi-stars">★ ★ ★ ★ ★</div>
+        <p class="wte-testi-text">
+          "Once my session was completed it felt like I did a 180 — a total transformation. I felt light as a feather with no worries. I left understanding that if I wanted to continue to feel this way, I would have to do my part. This to me meant everything."
+        </p>
+        <span class="wte-testi-author">— Frank</span>
+      </div>
+      <div class="wte-testi-card reveal d2">
+        <div class="wte-testi-stars">★ ★ ★ ★ ★</div>
+        <p class="wte-testi-text">
+          "Marinés holds space unlike anyone I have ever encountered. The program gave me permission to grieve what I had been carrying for decades. By month three, I barely recognized my inner world — in the most beautiful way."
+        </p>
+        <span class="wte-testi-author">— Community Member</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MEET YOUR GUIDE ═══════════════════════════════ -->
+<section id="guide">
+  <div class="guide-inner">
+    <div class="guide-image">
+      <img
+        src="https://cdn.canvasrebel.com/wp-content/uploads/2025/03/c-1741651610981-1741651610627_marins_rodriguez_img_9285.jpg"
+        alt="Marinés Rodriguez — Your Guide"
+      />
+    </div>
+    <div class="guide-content">
+      <span class="eyebrow">Your Guide</span>
+      <div class="hairline"></div>
+      <h2 class="section-title">Marinés <em>Rodriguez</em></h2>
+      <p class="body-text">
+        Marinés began her own walk with the elements through grief — her mother's death at 19 launched her into a decade-long immersion in healing traditions across cultures and modalities.
+      </p>
+      <p class="body-text" style="margin-top:16px;">
+        She is a Reiki Master, Certified Sound Healer, Transformational Hypnosis Practitioner, Akashic Records Reader, Peer Recovery Coach, and Certified Chaplain. But beyond credentials, she is a woman who has walked the fire and returned to guide others through it.
+      </p>
+      <p class="body-text" style="margin-top:16px;">
+        Walking with the Elements is not a course she created — it is a map of her own healing. She walks alongside you through every threshold.
+      </p>
+      <div style="margin-top:36px;display:flex;gap:16px;flex-wrap:wrap;">
+        <a href="about.html" class="btn-green">Read Her Full Story</a>
+        <a href="https://canvasrebel.com/meet-marines-rodriguez/" target="_blank" class="btn-outline">Featured in Canvas Rebel →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ URGENCY STRIP ══════════════════════════════════ -->
+<div id="urgency">
+  <div class="container">
+    <p class="urgency-text">
+      <strong>Enrollment is intentionally limited.</strong> &nbsp;·&nbsp; Marinés accepts a small cohort each cycle to ensure deep, personal attention for every participant.
+    </p>
+  </div>
+</div>
+
+<!-- ══ PRICING ════════════════════════════════════════ -->
 <section id="pricing">
   <div class="container">
     <div class="pricing-header reveal">
-      <span class="eyebrow" style="text-align:center;display:block;"></span>
-      <h2 class="section-title" style="text-align:center;">Investment Offerings</h2>
+      <span class="eyebrow" style="text-align:center;display:block;">The Investment</span>
+      <div class="hairline" style="margin:0 auto;"></div>
+      <h2 class="section-title" style="text-align:center;">Choose Your <em>Path</em></h2>
     </div>
+    <p class="pricing-subhead reveal">All plans include the complete 5-month program. Choose what flows for you.</p>
     <div class="pricing-grid">
 
-      <!-- Earth Plan -->
       <div class="pricing-card reveal d1">
-        <img
-          class="pricing-image"
-          src="https://static.wixstatic.com/media/nsplsh_34295cc1482f4f2c96a5a1f8c52abef5~mv2.jpg/v1/fill/w_980,h_490,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/nsplsh_34295cc1482f4f2c96a5a1f8c52abef5~mv2.jpg"
-          alt="Earth Plan"
-        />
+        <img class="pricing-img" src="https://static.wixstatic.com/media/nsplsh_34295cc1482f4f2c96a5a1f8c52abef5~mv2.jpg/v1/fill/w_980,h_490,al_c,q_85,enc_avif,quality_auto/nsplsh_34295cc1482f4f2c96a5a1f8c52abef5~mv2.jpg" alt="Earth Plan" />
         <div class="pricing-body">
-          <p class="pricing-plan-name">Earth Plan</p>
+          <span class="pricing-plan">Earth Plan</span>
+          <div class="pricing-name">Root &amp; Rise</div>
           <div class="pricing-amount">$188</div>
-          <div class="pricing-interval">Every month</div>
-          <p class="pricing-desc">
-            This 5-month, early bird payment plan allows you to move at a steady, sustainable pace while receiving the full support of the program.
-          </p>
-          <div class="pricing-validity">Valid for 5 months</div>
-          <a href="https://calendly.com/praypartyrepeat" target="_blank" class="btn-outline">Sign Up</a>
+          <div class="pricing-interval">/ month × 5</div>
+          <div class="pricing-total">Total: $940</div>
+          <p class="pricing-desc">Move at a steady, sustainable pace. This early-bird payment plan lets you begin with roots, spreading the investment across your full journey.</p>
+          <ul class="pricing-perks">
+            <li>5 group ceremony calls</li>
+            <li>5 monthly private sessions</li>
+            <li>Community access</li>
+            <li>All guides &amp; audio library</li>
+          </ul>
+          <a href="https://calendly.com/praypartyrepeat/discoverycall" target="_blank" class="btn-outline">Apply for This Plan</a>
         </div>
       </div>
 
-      <!-- Water Plan -->
-      <div class="pricing-card reveal d2">
-        <img
-          class="pricing-image"
-          src="https://static.wixstatic.com/media/nsplsh_5a78476472693245577a6b~mv2_d_2112_3168_s_2.jpg/v1/fill/w_980,h_490,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/nsplsh_5a78476472693245577a6b~mv2_d_2112_3168_s_2.jpg"
-          alt="Water Plan"
-        />
+      <div class="pricing-card featured reveal d2">
+        <div class="pricing-badge">Most Popular</div>
+        <img class="pricing-img" src="https://static.wixstatic.com/media/nsplsh_5a78476472693245577a6b~mv2_d_2112_3168_s_2.jpg/v1/fill/w_980,h_490,al_c,q_85,enc_avif,quality_auto/nsplsh_5a78476472693245577a6b~mv2_d_2112_3168_s_2.jpg" alt="Water Plan" />
         <div class="pricing-body">
-          <p class="pricing-plan-name">Water Plan</p>
+          <span class="pricing-plan">Water Plan</span>
+          <div class="pricing-name">Flow &amp; Release</div>
           <div class="pricing-amount">$211</div>
-          <div class="pricing-interval">Every month</div>
-          <p class="pricing-desc">
-            This 5-month payment plan is ideal if you're ready to immerse yourself in the experience with ease and alignment at the standard rate.
-          </p>
-          <div class="pricing-validity">Valid for 5 months</div>
-          <a href="https://calendly.com/praypartyrepeat" target="_blank" class="btn-outline">Sign Up</a>
+          <div class="pricing-interval">/ month × 5</div>
+          <div class="pricing-total">Total: $1,055</div>
+          <p class="pricing-desc">The standard investment, flowing and aligned. Ideal for those ready to immerse themselves fully with ease and confidence.</p>
+          <ul class="pricing-perks">
+            <li>5 group ceremony calls</li>
+            <li>5 monthly private sessions</li>
+            <li>Community access</li>
+            <li>All guides &amp; audio library</li>
+          </ul>
+          <a href="https://calendly.com/praypartyrepeat/discoverycall" target="_blank" class="btn-green">Apply for This Plan</a>
         </div>
       </div>
 
-      <!-- Fire Plan -->
-      <div class="pricing-card best-value reveal d3">
-        <div class="best-value-badge">Best Value</div>
-        <img
-          class="pricing-image"
-          src="https://static.wixstatic.com/media/nsplsh_37716a71516a74377a5851~mv2_d_5074_7647_s_4_2.jpg/v1/fill/w_980,h_490,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/nsplsh_37716a71516a74377a5851~mv2_d_5074_7647_s_4_2.jpg"
-          alt="Fire Plan"
-        />
+      <div class="pricing-card reveal d3">
+        <img class="pricing-img" src="https://static.wixstatic.com/media/nsplsh_37716a71516a74377a5851~mv2_d_5074_7647_s_4_2.jpg/v1/fill/w_980,h_490,al_c,q_85,enc_avif,quality_auto/nsplsh_37716a71516a74377a5851~mv2_d_5074_7647_s_4_2.jpg" alt="Fire Plan" />
         <div class="pricing-body">
-          <p class="pricing-plan-name">Fire Plan</p>
+          <span class="pricing-plan">Fire Plan</span>
+          <div class="pricing-name">Transform &amp; Rise</div>
           <div class="pricing-amount">$899</div>
-          <div class="pricing-interval">Pay in full</div>
-          <p class="pricing-desc">
-            Pay in full and leap boldly into your integration experience, unlocking the best rate as you commit to your transformation.
-          </p>
-          <div class="pricing-validity">Valid for 5 months</div>
-          <a href="https://calendly.com/praypartyrepeat" target="_blank" class="btn-green">Sign Up and Save</a>
+          <div class="pricing-interval">Pay in Full</div>
+          <div class="pricing-total" style="color:var(--green);">Save $141 vs. monthly</div>
+          <p class="pricing-desc">Leap boldly into your transformation. Pay in full and receive our best rate as a reflection of your full commitment to the work.</p>
+          <ul class="pricing-perks">
+            <li>Everything in both plans</li>
+            <li>Priority scheduling for 1:1 sessions</li>
+            <li>Bonus: Personal element assessment</li>
+            <li>Best total value</li>
+          </ul>
+          <a href="https://calendly.com/praypartyrepeat/discoverycall" target="_blank" class="btn-outline">Apply for This Plan</a>
         </div>
       </div>
 
+    </div>
+    <div class="pricing-guarantee reveal d2">
+      <p>Not sure which plan is right for you? Book a complimentary discovery call with Marinés and she will help you choose the path that honors where you are right now.</p>
     </div>
   </div>
 </section>
 
 <!-- ══ FAQ ════════════════════════════════════════════ -->
-<section id="faq">
+<section id="wte-faq">
   <div class="container">
     <div class="faq-header reveal">
       <span class="eyebrow">Questions</span>
       <div class="hairline"></div>
-      <h2 class="section-title">FAQs</h2>
+      <h2 class="section-title">Frequently Asked</h2>
     </div>
-    <div class="faq-grid">
+    <div class="faq-list">
 
       <div class="faq-item reveal">
         <div class="faq-q">
-          <span>How will joining this program benefit me?</span>
+          <span>What makes this different from a regular healing course or workshop?</span>
           <span class="faq-icon">+</span>
         </div>
         <div class="faq-a">
-          <p>Experience holistic healing through our range of energy healing sessions, tailored to restore balance and promote well-being. Our skilled practitioners use various techniques to address physical, emotional, and spiritual imbalances.</p>
+          <p>Most courses give you information. This program gives you experience. Over five months you will be held, challenged, witnessed, and guided through an actual transformation — not just educated about one. The combination of private 1:1 sessions, live group ceremony, and community creates a container that single workshops simply cannot replicate.</p>
         </div>
       </div>
 
       <div class="faq-item reveal d1">
         <div class="faq-q">
-          <span>How will joining this program benefit me?</span>
+          <span>I've tried programs before and they didn't hold. How is this different?</span>
           <span class="faq-icon">+</span>
         </div>
         <div class="faq-a">
-          <p>Experience holistic healing through our range of energy healing sessions, tailored to restore balance and promote well-being. Our skilled practitioners use various techniques to address physical, emotional, and spiritual imbalances.</p>
+          <p>The reason most programs don't hold is that they stop at information or one-time experience without sustained integration. This program is built around integration as its core principle. Five months means the work compounds. Each element builds on the last. You don't just have an experience — you become it.</p>
         </div>
       </div>
 
       <div class="faq-item reveal d2">
         <div class="faq-q">
-          <span>How will joining this program benefit me?</span>
+          <span>How much time do I need to commit each month?</span>
           <span class="faq-icon">+</span>
         </div>
         <div class="faq-a">
-          <p>Experience holistic healing through our range of energy healing sessions, tailored to restore balance and promote well-being. Our skilled practitioners use various techniques to address physical, emotional, and spiritual imbalances.</p>
+          <p>At minimum: one 90-minute group ceremony call and one 60-minute private session per month. Additionally, you're invited (never required) to engage with the monthly ritual guide and community space. Most participants find themselves naturally drawn to spend more time with the material — which is a sign the healing is working.</p>
         </div>
       </div>
 
       <div class="faq-item reveal d3">
         <div class="faq-q">
-          <span>How will joining this program benefit me?</span>
+          <span>Is this fully virtual? Can I join from anywhere in the world?</span>
           <span class="faq-icon">+</span>
         </div>
         <div class="faq-a">
-          <p>Experience holistic healing through our range of energy healing sessions, tailored to restore balance and promote well-being. Our skilled practitioners use various techniques to address physical, emotional, and spiritual imbalances.</p>
+          <p>Yes. Walking with the Elements is fully virtual and has welcomed participants from across the country and internationally. All sessions are held via video call. Time zones are considered when scheduling group calls, and recordings are always available for those who cannot attend live.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">
+          <span>What if I miss a live ceremony call?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          <p>Life happens — and it is honored here. All group ceremony calls are recorded and shared with participants within 24 hours. You will never lose access to the content. However, we do encourage live attendance when possible, as the live container carries something that recordings cannot fully replicate.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal d1">
+        <div class="faq-q">
+          <span>How do I know if I'm ready for this level of work?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          <p>If you've been drawn to this page and read this far, some part of you already knows. Readiness is not about being healed enough — it's about being honest enough to begin. The discovery call with Marinés is the right place to explore this question together. There is no pressure, only discernment.</p>
         </div>
       </div>
 
@@ -514,20 +1093,28 @@
   </div>
 </section>
 
-<!-- ══ CTA ════════════════════════════════════════════ -->
-<section id="program-cta">
-  <div class="container">
-    <h2 class="program-cta-title reveal">Ready to Walk <em>with the Elements?</em></h2>
-    <p class="program-cta-sub reveal d1">Begin your 5-month journey of integration and transformation.</p>
-    <div class="reveal d2">
-      <a href="https://calendly.com/praypartyrepeat/discoverycall" target="_blank" class="btn-white-solid">Book Discovery Call</a>
+<!-- ══ FINAL CTA ══════════════════════════════════════ -->
+<section id="wte-cta">
+  <div class="wte-cta-bg"></div>
+  <div class="wte-cta-overlay"></div>
+  <div class="wte-cta-content">
+    <span class="wte-cta-eyebrow reveal">The Path is Open</span>
+    <h2 class="wte-cta-title reveal d1">
+      Your elements<br><em>are calling you home.</em>
+    </h2>
+    <p class="wte-cta-sub reveal d2">
+      This journey begins the moment you say yes to yourself.<br>
+      Begin with a complimentary discovery call — no pressure, only possibility.
+    </p>
+    <div class="wte-cta-actions reveal d3">
+      <a href="https://calendly.com/praypartyrepeat/discoverycall" target="_blank" class="btn-hero-primary">Book Your Discovery Call</a>
+      <a href="#pricing" class="btn-hero-ghost">Review the Investment</a>
     </div>
   </div>
 </section>
 
 <script src="nav.js"></script>
 <script>
-  // FAQ accordion
   document.querySelectorAll('.faq-q').forEach(q => {
     q.addEventListener('click', () => {
       const item = q.closest('.faq-item');
