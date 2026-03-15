@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home | Praypartyrepeat</title>
+<link rel="stylesheet" href="style.css">
+<style>
+
+/* ══ HERO ══════════════════════════════════════════════ */
+#hero {
+  position: relative;
+  height: 100vh;
+  min-height: 620px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://static.wixstatic.com/media/854f5a_33ec8b5e81774286801f5e6cfd65f35c~mv2.jpg');
+  background-size: cover;
+  background-position: center;
+  animation: kenburns 20s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+@keyframes kenburns {
+  0%   { transform: scale(1.06) translate(0,0); }
+  100% { transform: scale(1.14) translate(-1%,1.5%); }
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(30,30,30,0.35) 0%,
+    rgba(30,30,30,0.45) 50%,
+    rgba(30,30,30,0.72) 100%
+  );
+}
+.hero-content {
+  position: relative; z-index: 2;
+  text-align: center;
+  padding: 0 20px;
+  opacity: 0;
+  animation: fadeUp 1.3s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(30px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(52px, 9vw, 110px);
+  font-weight: 300;
+  line-height: 1;
+  color: #fff;
+  margin: 20px 0 28px;
+}
+.hero-title em { font-style: italic; color: rgba(255,255,255,0.85); }
+.hero-sub {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 48px;
+}
+.hero-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+}
+.hero-ctas { display:flex; gap:18px; justify-content:center; flex-wrap:wrap; }
+.btn-white {
+  display: inline-block;
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  background: #fff;
+  padding: 14px 36px;
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s;
+}
+.btn-white:hover { background: #f0f0f0; }
+.btn-ghost-white {
+  display: inline-block;
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.5);
+  padding: 14px 36px;
+  text-decoration: none;
+  transition: border-color 0.3s, background 0.3s;
+}
+.btn-ghost-white:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+
+/* ══ MEET MARINÉS ══════════════════════════════════════ */
+#meet {
+  background: var(--bg);
+}
+.meet-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 90px;
+  align-items: center;
+}
+.meet-image-wrap {
+  position: relative;
+}
+.meet-image-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -14px -14px 14px 14px;
+  border: 1px solid var(--hairline);
+  z-index: 0;
+}
+.meet-image-wrap img {
+  position: relative; z-index: 1;
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  display: block;
+}
+.meet-text .body-text { max-width: 100%; margin-bottom: 16px; }
+
+/* ══ OFFERINGS ═════════════════════════════════════════ */
+#offerings {
+  background: var(--bg2);
+}
+.offerings-header {
+  text-align: center; margin-bottom: 64px;
+}
+.offerings-header .section-title { margin: 0 auto 0; }
+.offerings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-bottom: 52px;
+}
+.offering-card {
+  background: var(--bg);
+  padding: 44px 38px;
+  border-top: 2px solid var(--hairline);
+  position: relative; overflow: hidden;
+  transition: background 0.3s;
+}
+.offering-card::after {
+  content: '';
+  position: absolute; bottom:0; left:0; right:0; height:2px;
+  background: var(--green);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.offering-card:hover { background: var(--bg3); }
+.offering-card:hover::after { transform: scaleX(1); }
+.offering-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--charcoal);
+  margin-bottom: 0;
+  line-height: 1.3;
+}
+.offerings-cta { text-align: center; }
+
+/* ══ FEATURED SERVICE ══════════════════════════════════ */
+#featured {
+  background: var(--bg);
+  padding: 0;
+}
+.featured-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.featured-image {
+  position: relative; min-height: 560px; overflow: hidden;
+}
+.featured-image img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 8s ease;
+}
+.featured-image:hover img { transform: scale(1.04); }
+.featured-content {
+  padding: 90px 72px;
+  display: flex; flex-direction: column; justify-content: center;
+  background: var(--bg2);
+}
+.featured-meta {
+  display: flex; gap: 28px; align-items: baseline;
+  margin: 22px 0 14px;
+}
+.featured-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 300;
+  color: var(--green);
+  line-height: 1;
+}
+.featured-dur {
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.featured-content .body-text { max-width: 100%; margin-bottom: 32px; }
+
+/* ══ TESTIMONIAL ═══════════════════════════════════════ */
+#testimonials {
+  background: var(--bg3);
+  position: relative; overflow: hidden;
+}
+#testimonials::before {
+  content: '"';
+  position: absolute; top: -80px; left: 24px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 480px;
+  color: rgba(61,90,71,0.06);
+  line-height: 1; pointer-events: none;
+}
+.testi-header { text-align: center; margin-bottom: 60px; position: relative; z-index:1; }
+.testi-card {
+  background: rgba(253,250,246,0.85);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--hairline);
+  padding: 48px 44px;
+  position: relative; z-index: 1;
+  max-width: 860px; margin: 0 auto;
+}
+.testi-stars { color: var(--green); font-size: 13px; letter-spacing: 4px; margin-bottom: 24px; }
+.testi-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; font-weight: 300; font-style: italic;
+  line-height: 1.8; color: var(--charcoal);
+  margin-bottom: 28px;
+}
+.testi-author {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--green);
+}
+
+/* ══ QUOTE BANNER ══════════════════════════════════════ */
+#quote-banner {
+  background: var(--green);
+  padding: 88px 0;
+  text-align: center;
+}
+.quote-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 300; font-style: italic;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.4;
+  margin-bottom: 16px;
+}
+.quote-attr {
+  font-family: 'Cinzel', serif;
+  font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+.quote-attr a { color: inherit; }
+
+/* ══ CONTACT ═══════════════════════════════════════════ */
+#contact {
+  background: var(--bg2);
+}
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 90px; align-items: start;
+}
+.contact-item { margin-bottom: 36px; }
+.contact-label {
+  font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 0.35em;
+  text-transform: uppercase; color: var(--green-lt); margin-bottom: 8px; display: block;
+}
+.contact-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 300; color: var(--charcoal); text-decoration: none;
+  transition: color 0.3s;
+}
+.contact-value:hover { color: var(--green); }
+.contact-form { display: flex; flex-direction: column; gap: 22px; }
+
+/* ══ RESPONSIVE ════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .meet-grid, .featured-inner, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+  .featured-image { min-height: 300px; }
+  .featured-content { padding: 56px 24px; }
+  .offerings-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .offerings-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Ceremonial Space Holder · Healer · Guide</span>
+    <h1 class="hero-title">Empower Your<br><em>Healing Journey</em></h1>
+    <p class="hero-sub">Reiki · Sound · Ceremony · Transformation</p>
+    <div class="hero-ctas">
+      <a href="#meet" class="btn-white">Learn More</a>
+      <a href="https://calendly.com/praypartyrepeat" target="_blank" class="btn-ghost-white">Book Online</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MARQUEE ════════════════════════════════════════ -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span class="marquee-item">Reiki &amp; Crystal Healing</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Akashic Records</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Sound Baths</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Cord Cutting</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Curated Ceremonies</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Consultation &amp; Coaching</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Transformational Hypnosis</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Recovery Coaching</span><span class="marquee-sep">·</span>
+    <!-- duplicate for seamless loop -->
+    <span class="marquee-item">Reiki &amp; Crystal Healing</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Akashic Records</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Sound Baths</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Cord Cutting</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Curated Ceremonies</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Consultation &amp; Coaching</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Transformational Hypnosis</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Recovery Coaching</span><span class="marquee-sep">·</span>
+  </div>
+</div>
+
+<!-- ══ MEET MARINÉS ══════════════════════════════════ -->
+<section id="meet">
+  <div class="container">
+    <div class="meet-grid">
+      <div class="meet-image-wrap reveal">
+        <img
+          src="https://static.wixstatic.com/media/854f5a_abb4bfe8234c4489b381d0831a2d2a1b~mv2.jpeg/v1/crop/x_105,y_0,w_796,h_796/fill/w_840,h_840,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/unnamed.jpeg"
+          alt="Marinés — Ceremonial Space Holder"
+        />
+      </div>
+      <div class="meet-text reveal d2">
+        <span class="eyebrow">Meet Marinés</span>
+        <div class="hairline"></div>
+        <h2 class="section-title">A dedicated <em>Ceremonial Space Holder</em>, and a facilitator of profound transformation</h2>
+        <p class="body-text">
+          Marinés is a dedicated Ceremonial Space Holder, and a facilitator of profound transformation.
+        </p>
+        <p class="body-text" style="margin-top:14px;">
+          Equipped with a rich tapestry of healing modalities, she empowers individuals to embark on personalized journeys of self-discovery. Combining her expertise in ancient practices like Reiki and Sound Healing with modern techniques like Transformational Hypnosis, she carefully guides her clients in energetic healing and rewriting subconscious narratives.
+        </p>
+        <p class="body-text" style="margin-top:14px;">
+          Driven by a passion for lasting change, Marinés' skills transcend typical healing encounters. Her socio-emotional and mental health background, coupled with her experience as a certified Recovery Coach, ensures holistic support beyond the initial session. By addressing core wounds and behavioral patterns, she empowers her clients to experience lasting transformation and blossom into their most empowered selves.
+        </p>
+        <a href="about.html" class="text-link" style="margin-top:32px;">Read More →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MY MEDICINE OFFERINGS ════════════════════════ -->
+<section id="offerings">
+  <div class="container">
+    <div class="offerings-header reveal">
+      <span class="eyebrow">My Medicine Offerings</span>
+      <div class="hairline" style="margin:0 auto 0;"></div>
+      <h2 class="section-title" style="text-align:center;">MY MEDICINE OFFERINGS</h2>
+    </div>
+    <div class="offerings-grid">
+      <div class="offering-card reveal d1">
+        <p class="offering-name">Reiki &amp; Crystal Healing</p>
+      </div>
+      <div class="offering-card reveal d2">
+        <p class="offering-name">Akashic Records and Other Intuitive Readings</p>
+      </div>
+      <div class="offering-card reveal d3">
+        <p class="offering-name">Sound Baths</p>
+      </div>
+      <div class="offering-card reveal d1">
+        <p class="offering-name">Cord Cutting</p>
+      </div>
+      <div class="offering-card reveal d2">
+        <p class="offering-name">Curated Ceremonies</p>
+      </div>
+      <div class="offering-card reveal d3">
+        <p class="offering-name">Consultation &amp; Coaching Sessions</p>
+      </div>
+    </div>
+    <div class="offerings-cta reveal">
+      <a href="https://calendly.com/praypartyrepeat/discoverycall" target="_blank" class="btn-green">Book Discovery Call Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FEATURED SERVICE ══════════════════════════════ -->
+<section id="featured">
+  <div class="featured-inner">
+    <div class="featured-image">
+      <img
+        src="https://static.wixstatic.com/media/aedf10ba6399447b826d02bc75d03bd6.jpg/v1/fill/w_1200,h_800,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/aedf10ba6399447b826d02bc75d03bd6.jpg"
+        alt="Reiki, Sound &amp; Crystal Healing"
+      />
+    </div>
+    <div class="featured-content">
+      <span class="eyebrow">Featured Service</span>
+      <div class="hairline"></div>
+      <h2 class="section-title" style="font-size:clamp(30px,3vw,46px);">
+        <a href="services.html" style="text-decoration:none;color:inherit;">Reiki, Sound &amp; <em>Crystal Healing</em></a>
+      </h2>
+      <div class="featured-meta">
+        <span class="featured-price">$133</span>
+        <span class="featured-dur">1 hr</span>
+      </div>
+      <p class="body-text">
+        Reiki is a Japanese technique that is used to heal physical/mental trauma, to support mental clarity, and spiritual well-being. Life force energy is channeled through hands unto you. Combined with sound healing and crystal therapy for a deeply restorative session.
+      </p>
+      <div style="margin-top:32px; display:flex; gap:16px; flex-wrap:wrap;">
+        <a href="https://calendly.com/praypartyrepeat/remotehealing" target="_blank" class="btn-green">Book Now</a>
+        <a href="services.html" class="btn-outline">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══════════════════════════════════ -->
+<section id="testimonials">
+  <div class="container">
+    <div class="testi-header reveal">
+      <span class="eyebrow">What Clients Are Saying</span>
+      <div class="hairline" style="margin:0 auto;"></div>
+      <h2 class="section-title" style="text-align:center;">What Clients Are Saying</h2>
+    </div>
+    <div class="testi-card reveal d2">
+      <div class="testi-stars">★ ★ ★ ★ ★</div>
+      <p class="testi-text">
+        I would recommend Marinés' services to anyone. It put me at ease, which is important, so I would know what to expect. The space she uses to work was very clean and felt really soothing and filled with peace and tranquility. I am a normal person with day-to-day activities just like everyone else. What I learned most was how much wear and tear we give our body and soul each day. Once my session was completed it felt like I did a 180- a total transformation. I felt light as a feather with no worries, I recall driving home and thinking of the wonderful thoughts that I had just encountered. I left that place understanding that If I wanted to continue to feel this way, I would have to do my part. This to me meant everything! I will absolutely recommend anyone to Marinés, even if it is just to try it. To those that do, good luck on your new journey.
+      </p>
+      <span class="testi-author">— Frank</span>
+    </div>
+    <div style="text-align:center; margin-top:20px; color: var(--muted); font-family:'Cormorant Garamond',serif; font-size:17px; font-style:italic; padding-bottom:8px;" class="reveal d3">
+      Rachel Willis
+    </div>
+  </div>
+</section>
+
+<!-- ══ QUOTE BANNER ══════════════════════════════════ -->
+<section id="quote-banner">
+  <div class="container">
+    <p class="quote-text reveal">"The wound is where the light enters you"</p>
+    <span class="quote-attr reveal d2">— <a href="https://meetlalo.com/" target="_blank">Rumi</a></span>
+  </div>
+</section>
+
+<!-- ══ CONTACT ════════════════════════════════════════ -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="reveal">
+        <span class="eyebrow">Contact</span>
+        <div class="hairline"></div>
+        <h2 class="section-title">Begin Your <em>Healing Journey</em></h2>
+        <p class="body-text" style="margin-bottom:44px;">
+          Ready to take the first step? Book a discovery call or reach out directly — Marinés would be honored to hold space for your transformation.
+        </p>
+        <div class="contact-item">
+          <span class="contact-label">Book Online</span>
+          <a href="https://calendly.com/praypartyrepeat" target="_blank" class="contact-value">calendly.com/praypartyrepeat</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Instagram</span>
+          <a href="https://www.instagram.com/praypartyrepeat/" target="_blank" class="contact-value">@praypartyrepeat</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Facebook</span>
+          <a href="https://www.facebook.com/mari.soo.juicy" target="_blank" class="contact-value">facebook.com/mari.soo.juicy</a>
+        </div>
+      </div>
+      <div class="reveal d2">
+        <form class="contact-form" onsubmit="return false;">
+          <div class="form-field">
+            <label class="form-label">Your Name</label>
+            <input class="form-input" type="text" placeholder="Full name">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Email Address</label>
+            <input class="form-input" type="email" placeholder="your@email.com">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Message</label>
+            <textarea class="form-textarea" placeholder="How can Marinés support you?"></textarea>
+          </div>
+          <div>
+            <button type="submit" class="btn-green" style="width:100%;padding:16px;border:none;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;font-family:'Jost',sans-serif;">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="nav.js"></script>
+</body>
+</html>

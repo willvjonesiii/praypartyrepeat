@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Walking with the Elements | Praypartyrepeat</title>
+<link rel="stylesheet" href="style.css">
+<style>
+
+/* ══ PROGRAM HERO ══════════════════════════════════════ */
+#program-hero {
+  position: relative;
+  height: 75vh; min-height: 520px;
+  display: flex; align-items: flex-end;
+  overflow: hidden;
+}
+.program-hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://static.wixstatic.com/media/a3c153_6f27754e06844d62a1708b316797fc08~mv2.jpg');
+  background-size: cover; background-position: center;
+  animation: kbz 24s ease-in-out infinite alternate;
+}
+@keyframes kbz {
+  0%   { transform: scale(1.05); }
+  100% { transform: scale(1.1) translate(-0.5%, 0.5%); }
+}
+.program-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(30,30,30,0.78) 0%, rgba(30,30,30,0.25) 60%, transparent 100%);
+}
+.program-hero-content {
+  position: relative; z-index: 2;
+  padding: 0 60px 64px;
+  opacity: 0;
+  animation: fadeUp 1.2s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(24px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.program-hero-content .eyebrow { color: rgba(255,255,255,0.6); }
+.program-hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(44px, 6.5vw, 84px);
+  font-weight: 300; color: #fff;
+  line-height: 1.05;
+}
+.program-hero-title em { font-style: italic; color: rgba(255,255,255,0.8); }
+.program-hero-sub {
+  font-family: 'Cinzel', serif; font-size: 11px;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: rgba(255,255,255,0.55); margin-top: 16px;
+}
+
+/* ══ PROGRAM OVERVIEW ══════════════════════════════════ */
+#overview {
+  background: var(--bg);
+}
+.overview-intro {
+  max-width: 760px; margin: 0 auto 72px; text-align: center;
+}
+.overview-intro .section-title { text-align: center; }
+.big-image {
+  width: 100%; max-height: 640px; object-fit: cover; display: block;
+  margin-bottom: 72px;
+}
+.overview-pillars {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+}
+.pillar-card {
+  background: var(--bg2); padding: 48px 40px;
+  border-top: 2px solid var(--hairline);
+  position: relative; overflow: hidden;
+  transition: background 0.3s;
+}
+.pillar-card::after {
+  content: ''; position: absolute; bottom:0; left:0; right:0; height:2px;
+  background: var(--green); transform: scaleX(0); transform-origin:left;
+  transition: transform 0.4s;
+}
+.pillar-card:hover { background: var(--bg3); }
+.pillar-card:hover::after { transform: scaleX(1); }
+.pillar-label {
+  font-family: 'Cinzel', serif; font-size: 10px;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--green-lt); margin-bottom: 16px; display: block;
+}
+.pillar-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px; font-weight: 300; color: var(--charcoal);
+  line-height: 1.2;
+}
+
+/* ══ ELEMENTS ══════════════════════════════════════════ */
+#elements {
+  background: var(--bg2);
+}
+.elements-header { margin-bottom: 64px; }
+.element-grid {
+  display: grid; gap: 64px;
+}
+.element-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+}
+.element-row:nth-child(even) .element-image { order: 2; }
+.element-row:nth-child(even) .element-text  { order: 1; }
+.element-image img {
+  width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;
+}
+.element-month {
+  font-family: 'Cinzel', serif; font-size: 10px;
+  letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--green-lt); margin-bottom: 14px; display: block;
+}
+.element-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px; font-weight: 300; color: var(--charcoal);
+  margin-bottom: 16px; line-height: 1.1;
+}
+.element-body { font-size: 15px; line-height: 1.9; color: var(--body); }
+
+/* ══ PRICING ═══════════════════════════════════════════ */
+#pricing {
+  background: var(--bg);
+}
+.pricing-header { text-align: center; margin-bottom: 64px; }
+.pricing-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+}
+.pricing-card {
+  background: var(--bg2); padding: 0;
+  border: 1px solid var(--hairline);
+  overflow: hidden; position: relative;
+  display: flex; flex-direction: column;
+}
+.pricing-card.best-value { border-color: var(--green); }
+.best-value-badge {
+  background: var(--green); color: #fff;
+  font-family: 'Cinzel', serif; font-size: 9px;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  padding: 8px 20px; text-align: center;
+}
+.pricing-image {
+  width: 100%; height: 200px; object-fit: cover; display: block;
+}
+.pricing-body { padding: 40px 36px; flex: 1; display: flex; flex-direction: column; }
+.pricing-plan-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px; font-weight: 300; color: var(--charcoal);
+  margin-bottom: 6px;
+}
+.pricing-amount {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px; font-weight: 300; color: var(--green);
+  line-height: 1; margin: 12px 0 6px;
+}
+.pricing-interval {
+  font-family: 'Jost', sans-serif; font-size: 12px;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 20px;
+}
+.pricing-desc {
+  font-size: 14px; line-height: 1.8; color: var(--body);
+  margin-bottom: 28px; flex: 1;
+}
+.pricing-validity {
+  font-family: 'Cinzel', serif; font-size: 10px;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--green-lt); margin-bottom: 24px;
+}
+
+/* ══ FAQ ═══════════════════════════════════════════════ */
+#faq {
+  background: var(--bg2);
+}
+.faq-header { margin-bottom: 56px; }
+.faq-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+}
+.faq-item {
+  background: var(--bg); border-top: 1px solid var(--hairline);
+  padding: 0;
+  overflow: hidden;
+}
+.faq-item:last-child { border-bottom: 1px solid var(--hairline); }
+.faq-q {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; font-weight: 400; color: var(--charcoal);
+  padding: 28px 32px;
+  cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  transition: background 0.3s;
+  user-select: none;
+}
+.faq-q:hover { background: var(--green-dim); }
+.faq-icon {
+  font-family: 'Jost', sans-serif; font-size: 20px; font-weight: 300;
+  color: var(--green); flex-shrink: 0;
+  transition: transform 0.3s;
+}
+.faq-a {
+  font-size: 15px; line-height: 1.85; color: var(--body);
+  max-height: 0; overflow: hidden;
+  padding: 0 32px;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+}
+.faq-item.open .faq-a {
+  max-height: 400px;
+  padding: 0 32px 28px;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+
+/* ══ CTA SECTION ═══════════════════════════════════════ */
+#program-cta {
+  background: var(--green); text-align: center; padding: 100px 0;
+}
+.program-cta-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 300; color: rgba(255,255,255,0.95);
+  line-height: 1.1; margin-bottom: 20px;
+}
+.program-cta-title em { font-style: italic; }
+.program-cta-sub {
+  font-size: 16px; color: rgba(255,255,255,0.65);
+  font-family: 'Jost', sans-serif; margin-bottom: 40px;
+}
+.btn-white-solid {
+  display: inline-block;
+  font-family: 'Jost', sans-serif; font-size: 11px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--green); background: #fff;
+  padding: 14px 40px; text-decoration: none;
+  transition: background 0.3s;
+}
+.btn-white-solid:hover { background: #f0f0f0; }
+
+/* ══ RESPONSIVE ════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .program-hero-content { padding: 0 24px 48px; }
+  .overview-pillars { grid-template-columns: 1fr; }
+  .element-row { grid-template-columns: 1fr; gap: 32px; }
+  .element-row:nth-child(even) .element-image { order: 0; }
+  .element-row:nth-child(even) .element-text  { order: 0; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .faq-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ PROGRAM HERO ══════════════════════════════════ -->
+<section id="program-hero">
+  <div class="program-hero-bg"></div>
+  <div class="program-hero-overlay"></div>
+  <div class="program-hero-content">
+    <span class="eyebrow">5-Month Virtual Program</span>
+    <h1 class="program-hero-title">Walking with <em>the Elements</em></h1>
+    <p class="program-hero-sub">Earth · Water · Fire · Air · Spirit</p>
+  </div>
+</section>
+
+<!-- ══ PROGRAM OVERVIEW ══════════════════════════════ -->
+<section id="overview">
+  <div class="container">
+    <div class="overview-intro reveal">
+      <span class="eyebrow" style="text-align:center;display:block;margin-bottom:14px;"></span>
+      <h2 class="section-title">Walking with the Elements<br><em>5-Month Virtual Program</em></h2>
+      <p class="body-text" style="max-width:620px;margin:0 auto;text-align:center;">
+        This is your Project Page. It's a great opportunity to help visitors understand the context and background of your latest work.
+      </p>
+    </div>
+
+    <img
+      class="big-image reveal"
+      src="https://static.wixstatic.com/media/11062b_7aa2fd1a9f704ca8b8c9112210cc23bd~mv2.jpg/v1/fill/w_1960,h_1416,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_7aa2fd1a9f704ca8b8c9112210cc23bd~mv2.jpg"
+      alt="Pink Oyster Mushrooms"
+    />
+
+    <h2 class="section-title reveal" style="text-align:center;margin-bottom:48px;">Program Overview</h2>
+    <div class="overview-pillars">
+      <div class="pillar-card reveal d1">
+        <span class="pillar-label">Pillar One</span>
+        <h3 class="pillar-title">5 Monthly Virtual Integration Calls</h3>
+      </div>
+      <div class="pillar-card reveal d2">
+        <span class="pillar-label">Pillar Two</span>
+        <h3 class="pillar-title">5 Monthly Virtual Integration Calls</h3>
+      </div>
+      <div class="pillar-card reveal d3">
+        <span class="pillar-label">Pillar Three</span>
+        <h3 class="pillar-title">5 Monthly Virtual Integration Calls</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ THE FIVE ELEMENTS ════════════════════════════ -->
+<section id="elements">
+  <div class="container">
+    <div class="elements-header reveal">
+      <span class="eyebrow">The Journey</span>
+      <div class="hairline"></div>
+      <h2 class="section-title">The Five <em>Elements</em></h2>
+    </div>
+    <div class="element-grid">
+
+      <div class="element-row reveal">
+        <div class="element-image">
+          <img
+            src="https://static.wixstatic.com/media/11062b_2413040bb0e142369d76f3878b966792~mv2.jpeg/v1/fill/w_756,h_566,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Water.jpeg"
+            alt="Water"
+          />
+        </div>
+        <div class="element-text">
+          <span class="element-month">Month 1</span>
+          <h3 class="element-title">The Element of <em>Water</em></h3>
+          <p class="element-body">
+            This is your Project description. Provide a brief summary to help visitors understand the context and background of your work.
+          </p>
+        </div>
+      </div>
+
+      <div class="element-row reveal">
+        <div class="element-image">
+          <img
+            src="https://static.wixstatic.com/media/a3c153_c3a1f52d22f34ebf807575c44a0b3c46~mv2.jpg/v1/fill/w_756,h_566,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/hasan-almasi-nKNm_75lH4g-unsplash%20Copy_j.jpg"
+            alt="Element 2"
+          />
+        </div>
+        <div class="element-text">
+          <span class="element-month">Month 2</span>
+          <h3 class="element-title">Project <em>Name</em></h3>
+          <p class="element-body">
+            This is your Project description. Provide a brief summary to help visitors understand the context and background of your work.
+          </p>
+        </div>
+      </div>
+
+      <div class="element-row reveal">
+        <div class="element-image">
+          <img
+            src="https://static.wixstatic.com/media/a3c153_b1efd27c479d430baf6513f717b4d7df~mv2.jpg/v1/fill/w_756,h_566,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/noah-boyer-mXz8dKrpO8w-unsplash.jpg"
+            alt="Element 3"
+          />
+        </div>
+        <div class="element-text">
+          <span class="element-month">Month 3</span>
+          <h3 class="element-title">Project <em>Name</em></h3>
+          <p class="element-body">
+            This is your Project description. Provide a brief summary to help visitors understand the context and background of your work.
+          </p>
+        </div>
+      </div>
+
+      <div class="element-row reveal">
+        <div class="element-image">
+          <img
+            src="https://static.wixstatic.com/media/a3c153_a948e560c4fb44eb9ec9a30bf5c105c4~mv2.jpg/v1/fill/w_756,h_564,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/sumner-mahaffey-7Y0NshQLohk-unsplash.jpg"
+            alt="Element 4"
+          />
+        </div>
+        <div class="element-text">
+          <span class="element-month">Month 4</span>
+          <h3 class="element-title">Project <em>Name</em></h3>
+          <p class="element-body">
+            This is your Project description. Provide a brief summary to help visitors understand the context and background of your work.
+          </p>
+        </div>
+      </div>
+
+      <div class="element-row reveal">
+        <div class="element-image">
+          <img
+            src="https://static.wixstatic.com/media/a3c153_b1efd27c479d430baf6513f717b4d7df~mv2.jpg/v1/fill/w_756,h_566,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/noah-boyer-mXz8dKrpO8w-unsplash.jpg"
+            alt="Element 5"
+          />
+        </div>
+        <div class="element-text">
+          <span class="element-month">Month 5</span>
+          <h3 class="element-title">Project <em>Name</em></h3>
+          <p class="element-body">
+            This is your Project description. Provide a brief summary to help visitors understand the context and background of your work.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRICING ═══════════════════════════════════════ -->
+<section id="pricing">
+  <div class="container">
+    <div class="pricing-header reveal">
+      <span class="eyebrow" style="text-align:center;display:block;"></span>
+      <h2 class="section-title" style="text-align:center;">Investment Offerings</h2>
+    </div>
+    <div class="pricing-grid">
+
+      <!-- Earth Plan -->
+      <div class="pricing-card reveal d1">
+        <img
+          class="pricing-image"
+          src="https://static.wixstatic.com/media/nsplsh_34295cc1482f4f2c96a5a1f8c52abef5~mv2.jpg/v1/fill/w_980,h_490,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/nsplsh_34295cc1482f4f2c96a5a1f8c52abef5~mv2.jpg"
+          alt="Earth Plan"
+        />
+        <div class="pricing-body">
+          <p class="pricing-plan-name">Earth Plan</p>
+          <div class="pricing-amount">$188</div>
+          <div class="pricing-interval">Every month</div>
+          <p class="pricing-desc">
+            This 5-month, early bird payment plan allows you to move at a steady, sustainable pace while receiving the full support of the program.
+          </p>
+          <div class="pricing-validity">Valid for 5 months</div>
+          <a href="https://calendly.com/praypartyrepeat" target="_blank" class="btn-outline">Sign Up</a>
+        </div>
+      </div>
+
+      <!-- Water Plan -->
+      <div class="pricing-card reveal d2">
+        <img
+          class="pricing-image"
+          src="https://static.wixstatic.com/media/nsplsh_5a78476472693245577a6b~mv2_d_2112_3168_s_2.jpg/v1/fill/w_980,h_490,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/nsplsh_5a78476472693245577a6b~mv2_d_2112_3168_s_2.jpg"
+          alt="Water Plan"
+        />
+        <div class="pricing-body">
+          <p class="pricing-plan-name">Water Plan</p>
+          <div class="pricing-amount">$211</div>
+          <div class="pricing-interval">Every month</div>
+          <p class="pricing-desc">
+            This 5-month payment plan is ideal if you're ready to immerse yourself in the experience with ease and alignment at the standard rate.
+          </p>
+          <div class="pricing-validity">Valid for 5 months</div>
+          <a href="https://calendly.com/praypartyrepeat" target="_blank" class="btn-outline">Sign Up</a>
+        </div>
+      </div>
+
+      <!-- Fire Plan -->
+      <div class="pricing-card best-value reveal d3">
+        <div class="best-value-badge">Best Value</div>
+        <img
+          class="pricing-image"
+          src="https://static.wixstatic.com/media/nsplsh_37716a71516a74377a5851~mv2_d_5074_7647_s_4_2.jpg/v1/fill/w_980,h_490,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/nsplsh_37716a71516a74377a5851~mv2_d_5074_7647_s_4_2.jpg"
+          alt="Fire Plan"
+        />
+        <div class="pricing-body">
+          <p class="pricing-plan-name">Fire Plan</p>
+          <div class="pricing-amount">$899</div>
+          <div class="pricing-interval">Pay in full</div>
+          <p class="pricing-desc">
+            Pay in full and leap boldly into your integration experience, unlocking the best rate as you commit to your transformation.
+          </p>
+          <div class="pricing-validity">Valid for 5 months</div>
+          <a href="https://calendly.com/praypartyrepeat" target="_blank" class="btn-green">Sign Up and Save</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ════════════════════════════════════════════ -->
+<section id="faq">
+  <div class="container">
+    <div class="faq-header reveal">
+      <span class="eyebrow">Questions</span>
+      <div class="hairline"></div>
+      <h2 class="section-title">FAQs</h2>
+    </div>
+    <div class="faq-grid">
+
+      <div class="faq-item reveal">
+        <div class="faq-q">
+          <span>How will joining this program benefit me?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          <p>Experience holistic healing through our range of energy healing sessions, tailored to restore balance and promote well-being. Our skilled practitioners use various techniques to address physical, emotional, and spiritual imbalances.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal d1">
+        <div class="faq-q">
+          <span>How will joining this program benefit me?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          <p>Experience holistic healing through our range of energy healing sessions, tailored to restore balance and promote well-being. Our skilled practitioners use various techniques to address physical, emotional, and spiritual imbalances.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal d2">
+        <div class="faq-q">
+          <span>How will joining this program benefit me?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          <p>Experience holistic healing through our range of energy healing sessions, tailored to restore balance and promote well-being. Our skilled practitioners use various techniques to address physical, emotional, and spiritual imbalances.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal d3">
+        <div class="faq-q">
+          <span>How will joining this program benefit me?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          <p>Experience holistic healing through our range of energy healing sessions, tailored to restore balance and promote well-being. Our skilled practitioners use various techniques to address physical, emotional, and spiritual imbalances.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ════════════════════════════════════════════ -->
+<section id="program-cta">
+  <div class="container">
+    <h2 class="program-cta-title reveal">Ready to Walk <em>with the Elements?</em></h2>
+    <p class="program-cta-sub reveal d1">Begin your 5-month journey of integration and transformation.</p>
+    <div class="reveal d2">
+      <a href="https://calendly.com/praypartyrepeat/discoverycall" target="_blank" class="btn-white-solid">Book Discovery Call</a>
+    </div>
+  </div>
+</section>
+
+<script src="nav.js"></script>
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.closest('.faq-item');
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>

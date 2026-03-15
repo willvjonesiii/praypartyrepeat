@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Praypartyrepeat</title>
+<link rel="stylesheet" href="style.css">
+<style>
+
+/* ══ ABOUT INTRO ═══════════════════════════════════════ */
+#about-intro {
+  background: var(--bg);
+  padding-top: 60px;
+}
+.about-intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 90px;
+  align-items: start;
+}
+.about-body .body-text { max-width: 100%; margin-bottom: 16px; }
+
+/* ══ ABOUT IMAGE MOSAIC ════════════════════════════════ */
+#about-images {
+  background: var(--bg2);
+  padding: 72px 0;
+}
+.image-mosaic {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+.image-mosaic img {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+.img-tall { aspect-ratio: 3/4; }
+.img-wide { aspect-ratio: 4/3; }
+
+/* ══ CERTIFICATIONS ════════════════════════════════════ */
+#certifications {
+  background: var(--bg);
+}
+.certs-header { margin-bottom: 64px; }
+.cert-list { display: flex; flex-direction: column; gap: 0; }
+.cert-item {
+  border-top: 1px solid var(--hairline);
+  padding: 48px 0;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 60px;
+  align-items: start;
+  transition: background 0.3s;
+  cursor: default;
+}
+.cert-item:last-child { border-bottom: 1px solid var(--hairline); }
+.cert-item:hover { background: var(--green-dim); }
+.cert-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--green-lt);
+  letter-spacing: 0.1em;
+  padding-top: 4px;
+}
+.cert-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 300;
+  color: var(--charcoal);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+.cert-desc {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--body);
+}
+.cert-header-col {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ══ CTA SECTION ═══════════════════════════════════════ */
+#about-cta {
+  background: var(--bg2);
+  text-align: center;
+}
+.about-cta-inner { max-width: 680px; margin: 0 auto; }
+.about-cta-inner .section-title { text-align: center; }
+.about-cta-inner .body-text { margin: 0 auto 36px; text-align: center; max-width: 520px; }
+
+/* ══ RESPONSIVE ════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .about-intro-grid { grid-template-columns: 1fr; gap: 48px; }
+  .image-mosaic { grid-template-columns: repeat(2, 1fr); }
+  .cert-item { grid-template-columns: 1fr; gap: 14px; padding: 36px 0; }
+}
+@media (max-width: 600px) {
+  .image-mosaic { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ PAGE HERO ════════════════════════════════════ -->
+<div class="page-hero">
+  <div class="container">
+    <span class="eyebrow">About Me</span>
+    <h1 class="page-hero-title">Marinés</h1>
+  </div>
+</div>
+
+<!-- ══ ABOUT INTRO ══════════════════════════════════ -->
+<section id="about-intro">
+  <div class="container">
+    <div class="about-intro-grid">
+      <div class="about-body reveal">
+        <p class="body-text">
+          Marinés personal journey with grief and wounding catapulted her spiritual journey and passion for helping others to experience relief from pain and suffering. Her life long experience with emotional and physical pain resulted in a pursuit of education and training in the fields of Healing, Energy, Trauma, and the Subconscious.
+        </p>
+        <p class="body-text" style="margin-top:18px;">
+          Applying what she learned to her extensive knowledge and training, she has helped the lives of hundreds of others to transform their lives. Her work has empowered others to enhance their sense of peace, purpose, connection and compassion.
+        </p>
+        <p class="body-text" style="margin-top:18px;">
+          The ripple effects of these healing transformations has also improved their relationships, family dynamics, and careers all the while positively impacting their communities and our planet.
+        </p>
+        <div style="margin-top:36px; display:flex; gap:16px; flex-wrap:wrap;">
+          <a href="https://calendly.com/praypartyrepeat/discoverycall" target="_blank" class="btn-green">Book a Discovery Call</a>
+          <a href="services.html" class="btn-outline">View Offerings</a>
+        </div>
+      </div>
+      <div class="reveal d2" style="display:flex; flex-direction:column; gap:20px;">
+        <img
+          src="https://static.wixstatic.com/media/854f5a_5c23fd633a6c41958a90ac8c183c830c~mv2.jpeg/v1/fill/w_864,h_1064,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Facetune_01-12-2023-10-54-34.jpeg"
+          alt="Marinés"
+          style="width:100%; object-fit:cover; display:block;"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ IMAGE MOSAIC ══════════════════════════════════ -->
+<section id="about-images">
+  <div class="container">
+    <div class="image-mosaic reveal">
+      <img
+        class="img-wide"
+        src="https://static.wixstatic.com/media/11062b_0c04e8ad4ba245aba8eafa37828fcd23~mv2.jpg/v1/fill/w_824,h_464,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_0c04e8ad4ba245aba8eafa37828fcd23~mv2.jpg"
+        alt="Abstract Leaves"
+      />
+      <img
+        class="img-tall"
+        src="https://static.wixstatic.com/media/854f5a_476da678d1c1495a8483fff8e551cb31~mv2.jpg/v1/crop/x_87,y_0,w_1671,h_1944/fill/w_900,h_1048,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/1636138031812.jpg"
+        alt="Marinés"
+      />
+      <img
+        class="img-wide"
+        src="https://static.wixstatic.com/media/11062b_d8ffe44b9733479fa5ed5b369a02d62e~mv2.jpeg/v1/fill/w_784,h_522,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_d8ffe44b9733479fa5ed5b369a02d62e~mv2.jpeg"
+        alt="Leaf Pattern"
+      />
+      <img
+        class="img-tall"
+        src="https://static.wixstatic.com/media/854f5a_abb4bfe8234c4489b381d0831a2d2a1b~mv2.jpeg/v1/crop/x_105,y_0,w_796,h_796/fill/w_840,h_840,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/unnamed.jpeg"
+        alt="Marinés portrait"
+      />
+    </div>
+  </div>
+</section>
+
+<!-- ══ MY CERTIFICATIONS ════════════════════════════ -->
+<section id="certifications">
+  <div class="container">
+    <div class="certs-header reveal">
+      <span class="eyebrow">Credentials</span>
+      <div class="hairline"></div>
+      <h2 class="section-title">MY CERTIFICATIONS</h2>
+    </div>
+    <div class="cert-list">
+
+      <div class="cert-item reveal">
+        <div class="cert-header-col">
+          <span class="cert-num">01</span>
+          <h3 class="cert-name">Reiki Master &amp; Teacher</h3>
+        </div>
+        <p class="cert-desc">
+          Reiki is a Japanese healing technique that is used to heal physical/mental pain and trauma, support mental clarity, emotional health, and spiritual well-being. Reiki Life force energy is channeled through the Reiki Practitioner which then raises awareness in and around the physical body where limiting thoughts and repressed emotions which may have created tension and energetic blockages are contained. This causes the feelings and thoughts that were contributing to a sense of density and often mental fog, to loosen its grip, allowing the intention of the recipient and of the Reiki healer to swoop in and clarify the energy pathways.
+        </p>
+      </div>
+
+      <div class="cert-item reveal">
+        <div class="cert-header-col">
+          <span class="cert-num">02</span>
+          <h3 class="cert-name">Sound Healer</h3>
+        </div>
+        <p class="cert-desc">
+          Certified by different Organizations as Sound Healer as well as additionally having multiple other teachers in Shamanic &amp; Indigenous Practices, Marinés' Sound Healing is well developed and profound, with 7 years of experience with various traditions of Sound Healing. Marinés uses instruments intentionally to help bring the body, mind, and heart into harmony. The various frequencies used break through energetic and emotional blockages and put your brain wave state in a state which is optimal for healing and rest. Sound Healing has been scientifically proven to help ease anxiety and stress and promotes relaxation. It also assists a meditative state that stays with you for days beyond the service.
+        </p>
+      </div>
+
+      <div class="cert-item reveal">
+        <div class="cert-header-col">
+          <span class="cert-num">03</span>
+          <h3 class="cert-name">Certified Transformational Hypnosis</h3>
+        </div>
+        <p class="cert-desc">
+          Transformational Hypnosis is a treatment option that may help you cope with and treat different behavioral and thought patterns. The practioner guides you into a deep state of relaxation to access the subconscious &amp; makes suggestions designed to help you become more open to change and improvement.
+        </p>
+      </div>
+
+      <div class="cert-item reveal">
+        <div class="cert-header-col">
+          <span class="cert-num">04</span>
+          <h3 class="cert-name">Peer Recovery Coach</h3>
+        </div>
+        <p class="cert-desc">
+          Recovery coaches work side by side with individuals, seeing them as a valuable and integral part of drafting a recovery plan. As humans, Marinés believes most of us are recovering from something. This could be compulsive eating, poverty consciousness, deprecating self talk, people pleasing, grief, heartbreak, and substance use disorders.
+          <br><br>
+          Marinés' Recovery Coaching is unique because she integrates her other expertise, when needed, to support her clients empowerment. Recovery Coaches help people to create their own recovery plans, and develop their own recovery pathways. Recovery plans and other supports are customized, and build on each individual's strengths, needs, and recovery goals.
+        </p>
+      </div>
+
+      <div class="cert-item reveal">
+        <div class="cert-header-col">
+          <span class="cert-num">05</span>
+          <h3 class="cert-name">Akashic Records Reader and Healer</h3>
+        </div>
+        <p class="cert-desc">
+          The Akashic Records contain vibrational archives of every Soul's journey throughout all its incarnations- past, present, and future possibilities. The future is not set in stone, and we have free will, which I believe to be why Readings can be helpful and beneficial for us while on our journey. When we know what cycle we are in and receive insight from our guides, we can focus on what we should most prioritize as well as what we most need to release, cleanse, or clear from our body, mind, and energetic field.
+        </p>
+      </div>
+
+      <div class="cert-item reveal">
+        <div class="cert-header-col">
+          <span class="cert-num">06</span>
+          <h3 class="cert-name">Certified Chaplain</h3>
+        </div>
+        <p class="cert-desc">
+          Chaplains are practitioners who offer guidance, help, and support to a wide range of people. The chaplain uses their respective skillset to fulfill the psycho-spiritual needs of those they serve and provides appropriate resources as necessary.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ═══════════════════════════════════════════ -->
+<section id="about-cta">
+  <div class="container">
+    <div class="about-cta-inner reveal">
+      <span class="eyebrow" style="text-align:center;display:block;"></span>
+      <h2 class="section-title">Ready to Begin <em>Your Journey?</em></h2>
+      <p class="body-text">
+        Marinés would be honored to hold space for your transformation. Book a discovery call to explore how her healing modalities can support you.
+      </p>
+      <a href="https://calendly.com/praypartyrepeat/discoverycall" target="_blank" class="btn-green">Book Discovery Call Now</a>
+    </div>
+  </div>
+</section>
+
+<script src="nav.js"></script>
+</body>
+</html>

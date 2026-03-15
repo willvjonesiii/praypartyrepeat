@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services | Praypartyrepeat</title>
+<link rel="stylesheet" href="style.css">
+<style>
+
+/* ══ SERVICE HERO ══════════════════════════════════════ */
+#service-hero {
+  position: relative;
+  height: 70vh;
+  min-height: 480px;
+  display: flex; align-items: flex-end;
+  overflow: hidden;
+}
+.service-hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://static.wixstatic.com/media/aedf10ba6399447b826d02bc75d03bd6.jpg');
+  background-size: cover;
+  background-position: center;
+  animation: kenburns2 22s ease-in-out infinite alternate;
+}
+@keyframes kenburns2 {
+  0%   { transform: scale(1.05); }
+  100% { transform: scale(1.12) translate(1%, -0.5%); }
+}
+.service-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(30,30,30,0.75) 0%,
+    rgba(30,30,30,0.3) 60%,
+    transparent 100%
+  );
+}
+.service-hero-content {
+  position: relative; z-index: 2;
+  padding: 0 60px 64px;
+  opacity: 0;
+  animation: fadeUp 1.2s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(24px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.service-hero-content .eyebrow { color: rgba(255,255,255,0.6); }
+.service-hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(48px, 7vw, 88px);
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.05;
+}
+.service-hero-title em { font-style:italic; color: rgba(255,255,255,0.8); }
+
+/* ══ SERVICE DETAIL ════════════════════════════════════ */
+#service-detail {
+  background: var(--bg);
+}
+.service-meta-bar {
+  display: flex;
+  gap: 48px;
+  align-items: baseline;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--hairline);
+  margin-bottom: 56px;
+}
+.meta-item {}
+.meta-label {
+  font-family: 'Cinzel', serif;
+  font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--muted); display: block; margin-bottom: 6px;
+}
+.meta-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px; font-weight: 300; color: var(--green);
+}
+.service-content-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.service-desc h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 400;
+  color: var(--charcoal);
+  margin: 32px 0 12px;
+}
+.service-desc h3:first-child { margin-top: 0; }
+.service-desc p {
+  font-size: 15px; line-height: 1.9; color: var(--body);
+  margin-bottom: 12px;
+}
+.service-desc .note {
+  font-size: 13px; color: var(--muted); font-style: italic;
+}
+.book-panel {
+  background: var(--bg2);
+  border: 1px solid var(--hairline);
+  padding: 40px 36px;
+  position: sticky; top: 100px;
+}
+.book-panel-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px; font-weight: 300;
+  color: var(--charcoal); margin-bottom: 6px;
+}
+.book-panel-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px; font-weight: 300;
+  color: var(--green); line-height: 1;
+  margin: 16px 0 4px;
+}
+.book-panel-dur {
+  font-family: 'Jost', sans-serif; font-size: 12px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 28px;
+}
+.book-panel a { width: 100%; text-align: center; display: block; }
+.book-panel a + a { margin-top: 12px; }
+
+/* ══ ALL OFFERINGS ═════════════════════════════════════ */
+#all-offerings {
+  background: var(--bg2);
+}
+.all-offerings-header { margin-bottom: 56px; }
+.offering-rows { display: flex; flex-direction: column; gap: 0; }
+.offering-row {
+  border-top: 1px solid var(--hairline);
+  padding: 36px 0;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 32px;
+  transition: background 0.3s;
+  cursor: default;
+}
+.offering-row:last-child { border-bottom: 1px solid var(--hairline); }
+.offering-row:hover { background: var(--green-dim); padding-left: 16px; }
+.offering-row-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px; font-weight: 300; color: var(--charcoal);
+}
+.offering-row-cta {
+  flex-shrink: 0;
+}
+
+/* ══ RESPONSIVE ════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .service-hero-content { padding: 0 24px 48px; }
+  .service-content-grid { grid-template-columns: 1fr; gap: 48px; }
+  .book-panel { position: static; }
+  .service-meta-bar { flex-wrap: wrap; gap: 28px; }
+  .offering-row { flex-direction: column; align-items: flex-start; gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ SERVICE HERO ══════════════════════════════════ -->
+<section id="service-hero">
+  <div class="service-hero-bg"></div>
+  <div class="service-hero-overlay"></div>
+  <div class="service-hero-content">
+    <span class="eyebrow">Services</span>
+    <h1 class="service-hero-title">Reiki, Sound &amp;<br><em>Crystal Healing</em></h1>
+  </div>
+</section>
+
+<!-- ══ SERVICE DETAIL ════════════════════════════════ -->
+<section id="service-detail">
+  <div class="container">
+    <div class="service-meta-bar reveal">
+      <div class="meta-item">
+        <span class="meta-label">Price</span>
+        <span class="meta-value">$133</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Duration</span>
+        <span class="meta-value" style="font-size:22px;">1 hr</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Location</span>
+        <span class="meta-value" style="font-size:22px;">In-Person &amp; Remote</span>
+      </div>
+    </div>
+
+    <div class="service-content-grid">
+      <div class="service-desc reveal">
+        <h3>Reiki</h3>
+        <p>
+          Reiki is a Japanese technique that is used to heal physical/mental trauma, to support mental clarity, and spiritual well-being. Life force energy is channeled through hands unto you. It raises awareness in and around the physical body where negative thoughts and feelings are contained. This causes the negative energy—such as stress, anxiety, physical pain, sadness, confusion, etc.—to loosen its grip, allowing the touch of the Reiki healer to swoop in and clarify the energy pathways.
+        </p>
+        <p class="note">*In my practice, I personally like to incorporate sound into my Reiki services if I am intuitively called to, but it is not guaranteed, and would be integrated into the time of service.</p>
+        <p class="note">**Clients should keep in mind that the recommended amount of Reiki sessions is at minimum 2-3, however relief &amp; healing is experienced after just one.</p>
+
+        <h3>Sound Bath / Sound Healing</h3>
+        <p>
+          Bathe in the harmony of different instruments with various frequencies to break through energetic and emotional blockages. The sound bath helps to ease anxiety and stress and promotes relaxation. It also assists a meditative state that stays with you for days beyond the service.
+        </p>
+
+        <h3>Crystal Therapy</h3>
+        <p>
+          Crystals are used to either ground or energize, crystals are intuitively placed and sound is used to send the energy and healing properties of the crystal to the chakras and through the body.
+        </p>
+        <p class="note">(This service combines nicely with the personal sound bath &amp; Reiki)</p>
+      </div>
+
+      <div class="book-panel reveal d2">
+        <p class="book-panel-title">Reiki, Sound &amp; Crystal Healing</p>
+        <div class="book-panel-price">$133</div>
+        <div class="book-panel-dur">1 hr · In-Person &amp; Remote</div>
+        <a href="https://calendly.com/praypartyrepeat/remotehealing" target="_blank" class="btn-green">Book Now</a>
+        <a href="https://calendly.com/praypartyrepeat/discoverycall" target="_blank" class="btn-outline" style="margin-top:12px;">Book Discovery Call</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ALL OFFERINGS ═════════════════════════════════ -->
+<section id="all-offerings">
+  <div class="container">
+    <div class="all-offerings-header reveal">
+      <span class="eyebrow">All Medicine Offerings</span>
+      <div class="hairline"></div>
+      <h2 class="section-title">MY MEDICINE OFFERINGS</h2>
+    </div>
+    <div class="offering-rows">
+      <div class="offering-row reveal">
+        <span class="offering-row-name">Reiki &amp; Crystal Healing</span>
+        <div class="offering-row-cta">
+          <a href="https://calendly.com/praypartyrepeat/remotehealing" target="_blank" class="btn-green">Book Now</a>
+        </div>
+      </div>
+      <div class="offering-row reveal d1">
+        <span class="offering-row-name">Akashic Records and Other Intuitive Readings</span>
+        <div class="offering-row-cta">
+          <a href="https://calendly.com/praypartyrepeat/discoverycall" target="_blank" class="btn-outline">Inquire</a>
+        </div>
+      </div>
+      <div class="offering-row reveal d2">
+        <span class="offering-row-name">Sound Baths</span>
+        <div class="offering-row-cta">
+          <a href="https://calendly.com/praypartyrepeat/discoverycall" target="_blank" class="btn-outline">Inquire</a>
+        </div>
+      </div>
+      <div class="offering-row reveal d1">
+        <span class="offering-row-name">Cord Cutting</span>
+        <div class="offering-row-cta">
+          <a href="https://calendly.com/praypartyrepeat/discoverycall" target="_blank" class="btn-outline">Inquire</a>
+        </div>
+      </div>
+      <div class="offering-row reveal d2">
+        <span class="offering-row-name">Curated Ceremonies</span>
+        <div class="offering-row-cta">
+          <a href="https://calendly.com/praypartyrepeat/discoverycall" target="_blank" class="btn-outline">Inquire</a>
+        </div>
+      </div>
+      <div class="offering-row reveal d3">
+        <span class="offering-row-name">Consultation &amp; Coaching Sessions</span>
+        <div class="offering-row-cta">
+          <a href="https://calendly.com/praypartyrepeat/discoverycall" target="_blank" class="btn-outline">Inquire</a>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:52px;" class="reveal">
+      <a href="https://calendly.com/praypartyrepeat/discoverycall" target="_blank" class="btn-green">Book Discovery Call Now</a>
+    </div>
+  </div>
+</section>
+
+<script src="nav.js"></script>
+</body>
+</html>
