@@ -1,23 +1,26 @@
 /* nav.js — injects nav + footer + cursor + scroll logic */
 (function() {
 
-  /* ── cursor glow orb ── */
+  /* ── cursor: crystal image + glow orb ── */
   document.body.insertAdjacentHTML('afterbegin',
-    '<div id="cursor"></div>'
+    '<div id="cursor"></div>' +
+    '<img id="cursor-crystal" src="crystal-cursor.png" alt="" draggable="false" />'
   );
   const cur = document.getElementById('cursor');
-  let mx=0,my=0,cx=0,cy=0;
-  document.addEventListener('mousemove', e=>{ mx=e.clientX; my=e.clientY; });
+  const crystal = document.getElementById('cursor-crystal');
+  let mx=0, my=0, cx=0, cy=0;
+  document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
   (function tick(){
-    cx+=(mx-cx)*0.12; cy+=(my-cy)*0.12;
-    cur.style.left=cx+'px'; cur.style.top=cy+'px';
+    cx += (mx-cx)*0.12; cy += (my-cy)*0.12;
+    cur.style.left     = cx+'px';     cur.style.top     = cy+'px';
+    crystal.style.left = mx+'px';     crystal.style.top = my+'px';
     requestAnimationFrame(tick);
   })();
-  document.addEventListener('mouseover', e=>{
-    if(e.target.closest('a,button')) cur.classList.add('on-link');
+  document.addEventListener('mouseover', e => {
+    if(e.target.closest('a,button')) { cur.classList.add('on-link'); crystal.classList.add('on-link'); }
   });
-  document.addEventListener('mouseout', e=>{
-    if(e.target.closest('a,button')) cur.classList.remove('on-link');
+  document.addEventListener('mouseout', e => {
+    if(e.target.closest('a,button')) { cur.classList.remove('on-link'); crystal.classList.remove('on-link'); }
   });
 
   /* ── nav ── */

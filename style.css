@@ -35,30 +35,45 @@ body {
 }
 
 /* ── CURSOR ──────────────────────────────── */
-html, html *, html *::before, html *::after {
-  cursor: url('crystal-cursor.svg') 4 1, auto !important;
-}
-/* Soft glowing orb that trails the crystal */
+html, html *, html *::before, html *::after { cursor: none !important; }
+
+/* Trailing glow orb */
 #cursor {
-  width: 48px; height: 48px;
+  width: 54px; height: 54px;
   background: radial-gradient(circle,
-    rgba(74,222,128,0.28) 0%,
-    rgba(34,197,94,0.12) 45%,
+    rgba(74,222,128,0.22) 0%,
+    rgba(34,197,94,0.09) 45%,
     transparent 70%
   );
   border-radius: 50%;
   position: fixed; top: 0; left: 0;
-  pointer-events: none; z-index: 9998;
-  margin: -24px 0 0 -24px;
-  transition: transform 0.2s ease;
+  pointer-events: none; z-index: 9997;
+  margin: -27px 0 0 -27px;
+  transition: transform 0.22s ease, background 0.22s ease;
 }
 #cursor.on-link {
-  transform: scale(1.8);
+  transform: scale(1.9);
   background: radial-gradient(circle,
-    rgba(74,222,128,0.4) 0%,
-    rgba(34,197,94,0.18) 45%,
+    rgba(74,222,128,0.38) 0%,
+    rgba(34,197,94,0.16) 45%,
     transparent 70%
   );
+}
+
+/* Crystal image cursor */
+#cursor-crystal {
+  width: 28px; height: 34px;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none; z-index: 9999;
+  margin: -1px 0 0 -10px;
+  transform: rotate(-15deg);
+  transform-origin: 50% 3%;
+  filter: drop-shadow(0 3px 10px rgba(0,200,80,0.5));
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+#cursor-crystal.on-link {
+  transform: rotate(-15deg) scale(1.35);
+  filter: drop-shadow(0 4px 14px rgba(0,230,100,0.7));
 }
 #cursor-dot { display: none; }
 
