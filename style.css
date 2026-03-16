@@ -348,10 +348,82 @@ footer {
 .form-textarea { resize: none; height: 90px; }
 ::placeholder { color: rgba(30,30,30,0.3); }
 
+/* ── HAMBURGER ────────────────────────────── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 6px 4px;
+  cursor: pointer;
+  z-index: 102;
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px; height: 1.5px;
+  background: var(--green);
+  transition: transform 0.32s ease, opacity 0.22s ease;
+}
+nav.over-dark:not(.scrolled) .nav-hamburger span { background: rgba(255,255,255,0.85); }
+nav.scrolled .nav-hamburger span { background: var(--green); }
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ── MOBILE MENU OVERLAY ─────────────────── */
+.nav-mobile-menu {
+  position: fixed; inset: 0;
+  background: rgba(14,20,16,0.97);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 101;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 0;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.36s ease;
+}
+.nav-mobile-menu.open { opacity: 1; pointer-events: all; }
+.nav-mobile-links {
+  list-style: none;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 0;
+  margin-bottom: 44px;
+}
+.nav-mobile-links li {
+  overflow: hidden;
+}
+.nav-mobile-links a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(30px, 7vw, 52px);
+  font-weight: 300; color: rgba(255,255,255,0.82);
+  text-decoration: none; letter-spacing: 0.02em;
+  display: block; padding: 10px 0;
+  transition: color 0.25s;
+}
+.nav-mobile-links a:hover,
+.nav-mobile-links a.active { color: #7fffd4; }
+.nav-mobile-divider {
+  width: 40px; height: 1px;
+  background: rgba(255,255,255,0.12);
+  margin: 8px auto;
+}
+.nav-mobile-cta {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: #fff; background: var(--green);
+  padding: 14px 44px; text-decoration: none;
+  transition: background 0.3s;
+}
+.nav-mobile-cta:hover { background: var(--green2); }
+
 /* ── RESPONSIVE ───────────────────────────── */
 @media (max-width: 900px) {
   nav, nav.scrolled { padding: 18px 24px; }
   .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .nav-hamburger { display: flex; }
   .container { padding: 0 24px; }
   section { padding: 72px 0; }
   .page-hero { padding: 120px 0 60px; }

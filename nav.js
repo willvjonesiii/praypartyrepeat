@@ -35,18 +35,47 @@
   const liItems = links.map(l=>`
     <li><a href="${l.href}" class="${l.href===page||l.href.startsWith(page)?'active':''}">${l.label}</a></li>
   `).join('');
+  const mobileLinks = links.map(l=>`
+    <li><a href="${l.href}" class="${l.href===page||l.href.startsWith(page)?'active':''}">${l.label}</a></li>
+  `).join('<li><div class="nav-mobile-divider"></div></li>');
+
   const navHTML = `
   <nav id="sitenav">
     <a href="index.html" class="nav-brand">Pray Party Repeat</a>
     <ul class="nav-links">${liItems}</ul>
-    <a href="https://calendly.com/praypartyrepeat" target="_blank" class="nav-cta">Book Online</a>
-  </nav>`;
+    <div style="display:flex;align-items:center;gap:14px;">
+      <a href="https://calendly.com/praypartyrepeat" target="_blank" class="nav-cta">Book Online</a>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-mobile-menu" id="nav-mobile-menu">
+    <ul class="nav-mobile-links">${mobileLinks}</ul>
+    <a href="https://calendly.com/praypartyrepeat" target="_blank" class="nav-mobile-cta">Book Online</a>
+  </div>`;
   document.body.insertAdjacentHTML('afterbegin', navHTML);
 
   /* ── nav scroll ── */
   const nav = document.getElementById('sitenav');
   if (page === 'index.html' || page === '') nav.classList.add('over-dark');
   window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60));
+
+  /* ── hamburger toggle ── */
+  const hamburger = document.getElementById('nav-hamburger');
+  const mobileMenu = document.getElementById('nav-mobile-menu');
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
 
   /* ── footer ── */
   const footerHTML = `
